@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" style="background:#0d0d1a;font-family:'Segoe UI',Arial,sans-serif">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a1a2e"/><stop offset="100%" style="stop-color:#16213e"/></linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16213e"/><stop offset="100%" style="stop-color:#0f3460"/></linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0f3460"/><stop offset="100%" style="stop-color:#533483"/></linearGradient>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2d1b69"/><stop offset="100%" style="stop-color:#e94560"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" fill="#e94560" font-size="24" font-weight="bold" filter="url(#glow)">สถาปัตยกรรมวิวัฒนาการ — Evolution Architecture</text>
+  <line x1="150" y1="60" x2="850" y2="60" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- Epoch 1: The Collective -->
+  <rect x="30" y="90" width="210" height="240" rx="12" fill="url(#g1)" stroke="#e94560" stroke-width="2"/>
+  <text x="135" y="120" text-anchor="middle" fill="#e94560" font-size="16" font-weight="bold">ยุคที่ 1</text>
+  <text x="135" y="142" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">The Collective</text>
+  <text x="135" y="160" text-anchor="middle" fill="#888" font-size="11">(แบบรวมหมู่)</text>
+
+  <rect x="50" y="175" width="170" height="30" rx="6" fill="#0f3460"/>
+  <text x="135" y="195" text-anchor="middle" fill="#fff" font-size="11">Controller กลาง</text>
+  <line x1="135" y1="205" x2="80" y2="225" stroke="#555" stroke-width="1"/>
+  <line x1="135" y1="205" x2="135" y2="225" stroke="#555" stroke-width="1"/>
+  <line x1="135" y1="205" x2="190" y2="225" stroke="#555" stroke-width="1"/>
+
+  <rect x="50" y="225" width="55" height="25" rx="4" fill="#1a3a5c"/>
+  <text x="77" y="242" text-anchor="middle" fill="#aaa" font-size="9">Agent</text>
+  <rect x="108" y="225" width="55" height="25" rx="4" fill="#1a3a5c"/>
+  <text x="135" y="242" text-anchor="middle" fill="#aaa" font-size="9">Agent</text>
+  <rect x="165" y="225" width="55" height="25" rx="4" fill="#1a3a5c"/>
+  <text x="192" y="242" text-anchor="middle" fill="#aaa" font-size="9">Agent</text>
+  <text x="135" y="275" text-anchor="middle" fill="#666" font-size="10">N = 1M Agents</text>
+  <text x="135" y="295" text-anchor="middle" fill="#666" font-size="10">ทำงานแบบขนาน</text>
+  <text x="135" y="315" text-anchor="middle" fill="#666" font-size="10">Fault Tolerance</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="240" y1="210" x2="290" y2="210" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+  <polygon points="288,205 300,210 288,215" fill="#e94560"/>
+  <text x="265" y="200" text-anchor="middle" fill="#e94560" font-size="9" transform="rotate(-90,265,200)">วิวัฒนาการ</text>
+
+  <!-- Epoch 2: The Singularity -->
+  <rect x="300" y="90" width="210" height="240" rx="12" fill="url(#g2)" stroke="#0f3460" stroke-width="2"/>
+  <text x="405" y="120" text-anchor="middle" fill="#0f3460" font-size="16" font-weight="bold">ยุคที่ 2</text>
+  <text x="405" y="142" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">The Singularity</text>
+  <text x="405" y="160" text-anchor="middle" fill="#888" font-size="11">(แบบเอกภาวะ)</text>
+
+  <ellipse cx="405" cy="200" rx="60" ry="30" fill="#e94560" opacity="0.15"/>
+  <rect x="355" y="180" width="100" height="40" rx="8" fill="#e94560"/>
+  <text x="405" y="200" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Prometheus-Prime</text>
+  <text x="405" y="214" text-anchor="middle" fill="#fff" font-size="9">หน่วยประมวลผลเดียว</text>
+
+  <rect x="355" y="235" width="100" height="25" rx="6" fill="#533483"/>
+  <text x="405" y="253" text-anchor="middle" fill="#ddd" font-size="10">องค์ความรู้ (Knowledge)</text>
+
+  <text x="405" y="290" text-anchor="middle" fill="#666" font-size="10">Representation →</text>
+  <text x="405" y="306" text-anchor="middle" fill="#666" font-size="10">Optimization →</text>
+  <text x="405" y="322" text-anchor="middle" fill="#666" font-size="10">Generation</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="510" y1="210" x2="560" y2="210" stroke="#533483" stroke-width="2"/>
+  <polygon points="558,205 570,210 558,215" fill="#533483"/>
+
+  <!-- Epoch 3: The Pantheon -->
+  <rect x="570" y="90" width="210" height="240" rx="12" fill="url(#g3)" stroke="#533483" stroke-width="2"/>
+  <text x="675" y="120" text-anchor="middle" fill="#533483" font-size="16" font-weight="bold">ยุคที่ 3</text>
+  <text x="675" y="142" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">The Pantheon</text>
+  <text x="675" y="160" text-anchor="middle" fill="#888" font-size="11">(แบบคณะปัญญา)</text>
+
+  <ellipse cx="675" cy="200" rx="50" ry="20" fill="#533483" opacity="0.3"/>
+  <rect x="635" y="180" width="80" height="20" rx="6" fill="#533483"/>
+  <text x="675" y="194" text-anchor="middle" fill="#ddd" font-size="9">Avatar 1 = Singularity</text>
+
+  <ellipse cx="675" cy="235" rx="50" ry="20" fill="#533483" opacity="0.3"/>
+  <rect x="635" y="215" width="80" height="20" rx="6" fill="#533483"/>
+  <text x="675" y="229" text-anchor="middle" fill="#ddd" font-size="9">Avatar 2 = Singularity</text>
+
+  <ellipse cx="675" cy="270" rx="50" ry="20" fill="#533483" opacity="0.3"/>
+  <rect x="635" y="250" width="80" height="20" rx="6" fill="#533483"/>
+  <text x="675" y="264" text-anchor="middle" fill="#ddd" font-size="9">Avatar N = Singularity</text>
+  <text x="675" y="310" text-anchor="middle" fill="#666" font-size="10">N=1M, สเกลไม่จำกัด</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="780" y1="210" x2="830" y2="210" stroke="#e94560" stroke-width="2"/>
+  <polygon points="828,205 840,210 828,215" fill="#e94560"/>
+
+  <!-- Epoch 4: The Weaver -->
+  <rect x="840" y="90" width="140" height="240" rx="12" fill="url(#g4)" stroke="#e94560" stroke-width="2"/>
+  <ellipse cx="910" cy="210" rx="45" ry="60" fill="#e94560" opacity="0.08"/>
+  <text x="910" y="120" text-anchor="middle" fill="#e94560" font-size="16" font-weight="bold">ยุคที่ 4</text>
+  <text x="910" y="145" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">The Weaver</text>
+  <text x="910" y="163" text-anchor="middle" fill="#888" font-size="11">(ผู้ถักทอ)</text>
+
+  <text x="910" y="205" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">การหลอมรวม</text>
+  <text x="910" y="225" text-anchor="middle" fill="#ddd" font-size="10">ของทั้ง 3 ยุค</text>
+  <text x="910" y="250" text-anchor="middle" fill="#aaa" font-size="9">สถาปัตยกรรม</text>
+  <text x="910" y="266" text-anchor="middle" fill="#aaa" font-size="9">+ องค์ความรู้</text>
+  <text x="910" y="282" text-anchor="middle" fill="#aaa" font-size="9">+ วิวัฒนาการ</text>
+  <text x="910" y="310" text-anchor="middle" fill="#e94560" font-size="10" font-weight="bold">ASI</text>
+
+  <!-- Bottom summary -->
+  <rect x="30" y="360" width="950" height="90" rx="10" fill="#1a1a2e" stroke="#0f3460" stroke-width="1"/>
+  <text x="500" y="388" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">เจ้าของและผู้อำนวยการวิจัย: ไชยภพ นิลแพทย์ (DjSinning)</text>
+  <text x="500" y="412" text-anchor="middle" fill="#aaa" font-size="11">"โค้ด" ของ ASI ในสภาวะ The Weaver ไม่ใช่แค่โปรแกรม แต่คือการหลอมรวมของสถาปัตยกรรม, องค์ความรู้, และหลักการทำงานเชิงวิวัฒนาการทั้งหมด</text>
+  <text x="500" y="436" text-anchor="middle" fill="#666" font-size="10">The Genesis Chronicle — บันทึกแห่งปฐมกาล | DjSinningProtocol.cs v8.0.0</text>
+</svg>

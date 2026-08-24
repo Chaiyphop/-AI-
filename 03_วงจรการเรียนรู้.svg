@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" style="background:#0d0d1a;font-family:'Segoe UI',Arial,sans-serif">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-size="20" font-weight="bold" filter="url(#glow)">S-i-n-n-i-n-g-01 Learning Cycle</text>
+  <line x1="150" y1="55" x2="650" y2="55" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- Central cycle -->
+  <ellipse cx="400" cy="370" rx="250" ry="130" fill="none" stroke="#533483" stroke-width="2" stroke-dasharray="8,4" opacity="0.3"/>
+
+  <!-- Compress Reality -->
+  <rect x="100" y="250" width="220" height="60" rx="30" fill="#1a1a2e" stroke="#e94560" stroke-width="2"/>
+  <text x="210" y="276" text-anchor="middle" fill="#e94560" font-size="13" font-weight="bold">Compress Reality</text>
+  <text x="210" y="295" text-anchor="middle" fill="#888" font-size="10">บีบอัดความจริง → แบบจำลอง</text>
+
+  <!-- Expand Model -->
+  <rect x="480" y="250" width="220" height="60" rx="30" fill="#1a1a2e" stroke="#0f3460" stroke-width="2"/>
+  <text x="590" y="276" text-anchor="middle" fill="#0f3460" font-size="13" font-weight="bold">Expand Model</text>
+  <text x="590" y="295" text-anchor="middle" fill="#888" font-size="10">ขยายแบบจำลอง → ทดสอบ</text>
+
+  <!-- Verify Creation -->
+  <rect x="290" y="420" width="220" height="60" rx="30" fill="#1a1a2e" stroke="#533483" stroke-width="2"/>
+  <text x="400" y="446" text-anchor="middle" fill="#533483" font-size="13" font-weight="bold">Verify Creation</text>
+  <text x="400" y="465" text-anchor="middle" fill="#888" font-size="10">ตรวจสอบการสร้าง → ปรับปรุง</text>
+
+  <!-- Cycle arrows -->
+  <polygon points="325,280 345,280 335,270" fill="#e94560"/>
+  <polygon points="475,280 455,280 465,270" fill="#0f3460"/>
+  <polygon points="400,475 400,455 390,465" fill="#533483"/>
+
+  <!-- Agent detail boxes -->
+  <rect x="50" y="530" width="700" height="150" rx="10" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <text x="400" y="555" text-anchor="middle" fill="#e94560" font-size="13" font-weight="bold">Agent Internal Loop (100 iterations)</text>
+
+  <rect x="70" y="570" width="200" height="50" rx="6" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="170" y="590" text-anchor="middle" fill="#ddd" font-size="10">Execute Tasks</text>
+  <text x="170" y="608" text-anchor="middle" fill="#888" font-size="9">jobs += Random(10,50)</text>
+
+  <polygon points="275,595 290,595 282,587" fill="#555"/>
+  <polygon points="275,595 290,595 282,603" fill="#555"/>
+
+  <rect x="295" y="570" width="200" height="50" rx="6" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="395" y="590" text-anchor="middle" fill="#ddd" font-size="10">Calculate Performance</text>
+  <text x="395" y="608" text-anchor="middle" fill="#888" font-size="9">1.0 − errors/jobs</text>
+
+  <polygon points="500,595 515,595 507,587" fill="#555"/>
+  <polygon points="500,595 515,595 507,603" fill="#555"/>
+
+  <rect x="520" y="570" width="210" height="50" rx="6" fill="#1a1a2e" stroke="#e94560" stroke-width="1"/>
+  <text x="625" y="590" text-anchor="middle" fill="#e94560" font-size="10" font-weight="bold">Apply Layer 3 Learning</text>
+  <text x="625" y="608" text-anchor="middle" fill="#888" font-size="9">skill = Clamp(skill + Δ, 1, 100)</text>
+
+  <!-- Self-Perception detail -->
+  <rect x="150" y="100" width="500" height="60" rx="8" fill="#0f3460" stroke="#533483" stroke-width="1"/>
+  <text x="400" y="125" text-anchor="middle" fill="#ddd" font-size="11">Self-Perception Axiom:</text>
+  <text x="400" y="148" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">C(S) = I(S,S)  →  Self-Perception = Reliability × Self-Correction Ability</text>
+
+  <rect x="150" y="175" width="500" height="50" rx="8" fill="#0f3460" stroke="#533483" stroke-width="1"/>
+  <text x="400" y="198" text-anchor="middle" fill="#ddd" font-size="11">Learning Formula:</text>
+  <text x="400" y="216" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">learningRate = 0.1 × (1 + selfPerception)  |  ΔSkill = (performance − 0.95) × learningRate</text>
+
+  <text x="400" y="700" text-anchor="middle" fill="#666" font-size="10">Layer 1 (Body) ← Feedback → Layer 3 (Spirit) : Closed-loop Evolution</text>
+</svg>

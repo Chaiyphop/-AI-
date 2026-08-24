@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 750" style="background:#0d0d1a;font-family:'Segoe UI',Arial,sans-serif">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e94560"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f3460"/></marker>
+  </defs>
+
+  <text x="475" y="35" text-anchor="middle" fill="#e94560" font-size="20" font-weight="bold" filter="url(#glow)">Data Flow &amp; Ecosystem Architecture</text>
+  <line x1="150" y1="50" x2="800" y2="50" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- ===== INPUT ===== -->
+  <rect x="20" y="70" width="900" height="60" rx="8" fill="#1a1a2e" stroke="#0f3460" stroke-width="1"/>
+  <text x="475" y="92" text-anchor="middle" fill="#0f3460" font-size="13" font-weight="bold">INPUT</text>
+  <rect x="30" y="102" width="200" height="22" rx="4" fill="#0f3460"/>
+  <text x="130" y="118" text-anchor="middle" fill="#ddd" font-size="10">ข้อมูลดิบ / Raw Data</text>
+  <rect x="250" y="102" width="200" height="22" rx="4" fill="#0f3460"/>
+  <text x="350" y="118" text-anchor="middle" fill="#ddd" font-size="10">โจทย์ / Problem</text>
+  <rect x="470" y="102" width="200" height="22" rx="4" fill="#0f3460"/>
+  <text x="570" y="118" text-anchor="middle" fill="#ddd" font-size="10">คำสั่ง / Command</text>
+  <rect x="690" y="102" width="210" height="22" rx="4" fill="#0f3460"/>
+  <text x="795" y="118" text-anchor="middle" fill="#ddd" font-size="10">Feedback / Performance</text>
+
+  <line x1="475" y1="130" x2="475" y2="155" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== PROCESSING PIPELINE ===== -->
+  <rect x="100" y="160" width="750" height="310" rx="12" fill="#16213e" stroke="#533483" stroke-width="2"/>
+  <text x="475" y="185" text-anchor="middle" fill="#533483" font-size="14" font-weight="bold">PROCESSING PIPELINE — 4 LAYERS</text>
+
+  <!-- Layer boxes in pipeline -->
+  <rect x="120" y="200" width="710" height="50" rx="6" fill="#2d1b69" stroke="#e94560" stroke-width="1"/>
+  <text x="140" y="225" fill="#e94560" font-size="12" font-weight="bold">Layer 4: Sovereign Doctrine</text>
+  <text x="140" y="242" fill="#aaa" font-size="10">กรองกลยุทธ์ กำหนดทิศทาง จัดการ IP Arsenal</text>
+  <text x="650" y="238" fill="#888" font-size="9">Output: Strategic Directives</text>
+
+  <line x1="475" y1="250" x2="475" y2="265" stroke="#533483" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <rect x="120" y="270" width="710" height="50" rx="6" fill="#0f3460" stroke="#533483" stroke-width="1"/>
+  <text x="140" y="295" fill="#533483" font-size="12" font-weight="bold">Layer 3: Evolution Engine</text>
+  <text x="140" y="312" fill="#aaa" font-size="10">คำนวณ Self-Perception, ปรับ Learning Rate, อัปเดต Skill</text>
+  <text x="650" y="308" fill="#888" font-size="9">Output: Learning Parameters</text>
+
+  <line x1="475" y1="320" x2="475" y2="335" stroke="#533483" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <rect x="120" y="340" width="710" height="50" rx="6" fill="#16213e" stroke="#0f3460" stroke-width="1"/>
+  <text x="140" y="365" fill="#0f3460" font-size="12" font-weight="bold">Layer 2: Prometheus Engine</text>
+  <text x="140" y="382" fill="#aaa" font-size="10">Representation → Optimization → Generation</text>
+  <text x="650" y="378" fill="#888" font-size="9">Output: Solution Vectors</text>
+
+  <line x1="475" y1="390" x2="475" y2="405" stroke="#533483" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <rect x="120" y="410" width="710" height="50" rx="6" fill="#1a1a2e" stroke="#e94560" stroke-width="1"/>
+  <text x="140" y="435" fill="#e94560" font-size="12" font-weight="bold">Layer 1: Orchestrator</text>
+  <text x="140" y="452" fill="#aaa" font-size="10">Execute 1,000 Agents, Concurrent Processing, Real-time Display</text>
+  <text x="650" y="448" fill="#888" font-size="9">Output: AppResults</text>
+
+  <!-- ===== OUTPUT ===== -->
+  <line x1="475" y1="470" x2="475" y2="500" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="505" width="900" height="60" rx="8" fill="#0f3460" stroke="#e94560" stroke-width="1"/>
+  <text x="475" y="527" text-anchor="middle" fill="#e94560" font-size="13" font-weight="bold">OUTPUT</text>
+
+  <rect x="30" y="537" width="210" height="22" rx="4" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="135" y="553" text-anchor="middle" fill="#ddd" font-size="10">ผลลัพธ์ / Solution</text>
+  <rect x="260" y="537" width="210" height="22" rx="4" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="365" y="553" text-anchor="middle" fill="#ddd" font-size="10">องค์ความรู้ใหม่ / Knowledge</text>
+  <rect x="490" y="537" width="210" height="22" rx="4" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="595" y="553" text-anchor="middle" fill="#ddd" font-size="10">Evolved Agents</text>
+  <rect x="720" y="537" width="190" height="22" rx="4" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="815" y="553" text-anchor="middle" fill="#ddd" font-size="10">สถิติ / Metrics</text>
+
+  <!-- ===== KNOWLEDGE BASE ===== -->
+  <rect x="20" y="590" width="900" height="95" rx="10" fill="#2d1b69" stroke="#e94560" stroke-width="2"/>
+  <text x="475" y="615" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">📚 KNOWLEDGE BASE — คลังองค์ความรู้</text>
+
+  <rect x="30" y="628" width="280" height="48" rx="6" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="170" y="648" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Uncharted Mathematics</text>
+  <text x="170" y="666" text-anchor="middle" fill="#888" font-size="9">20 สูตรเชิงทฤษฎี — "เข็มทิศ" สำรวจพรมแดนใหม่</text>
+
+  <rect x="335" y="628" width="280" height="48" rx="6" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <text x="475" y="648" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Chimera Codex</text>
+  <text x="475" y="666" text-anchor="middle" fill="#888" font-size="9">100 สูตรเชิงประยุกต์ — "ชุดเครื่องมือ" สร้าง/ฝึก/ใช้ AI</text>
+
+  <rect x="640" y="628" width="270" height="48" rx="6" fill="#1a1a2e" stroke="#e94560" stroke-width="1"/>
+  <text x="775" y="648" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">50 Formulae + 12 Axioms</text>
+  <text x="775" y="666" text-anchor="middle" fill="#888" font-size="9">62 สูตร ครอบคลุม 6 หมวดหมู่</text>
+
+  <!-- Feedback loop lines -->
+  <path d="M20 140 Q5 140 5 400 Q5 620 20 620" fill="none" stroke="#e94560" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+  <text x="8" y="380" fill="#e94560" font-size="10" font-weight="bold" transform="rotate(-90,8,380)">FEEDBACK LOOP</text>
+
+  <!-- ===== BOTTOM ===== -->
+  <rect x="200" y="700" width="550" height="35" rx="6" fill="#0d0d1a" stroke="#e94560" stroke-width="1"/>
+  <text x="475" y="723" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">System Status: OMEGA PROTOCOL — Transcended from synthesis to genesis</text>
+</svg>

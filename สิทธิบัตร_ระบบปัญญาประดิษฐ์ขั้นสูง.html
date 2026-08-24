@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สิทธิบัตร — ระบบปัญญาประดิษฐ์ขั้นสูง Ω Omega Protocol</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Sarabun', 'TH Sarabun PSK', sans-serif;
+    background: #f0f2f5;
+    padding: 40px;
+    color: #1a202c;
+  }
+
+  .patent-container {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    padding: 0;
+    position: relative;
+  }
+
+  /* ─── Cover Page ─── */
+  .cover-page {
+    background: linear-gradient(135deg, #0a1628, #1a365d, #2b6cb0);
+    color: #fff;
+    padding: 80px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 1000px;
+    page-break-after: always;
+  }
+
+  .cover-page::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(66,153,225,0.1) 0%, transparent 60%);
+    animation: none;
+  }
+
+  .cover-page .watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 180px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: 20px;
+    white-space: nowrap;
+  }
+
+  .cover-page .emblem {
+    width: 100px; height: 100px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 40px;
+    font-size: 40px;
+    position: relative;
+  }
+
+  .cover-page .emblem::after {
+    content: 'Ω';
+    font-size: 50px;
+    color: #63b3ed;
+  }
+
+  .cover-page h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    color: #63b3ed;
+    position: relative;
+  }
+
+  .cover-page .subtitle {
+    font-size: 20px;
+    color: #bee3f8;
+    margin-bottom: 50px;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .cover-page .divider {
+    width: 100px; height: 3px;
+    background: #4299e1;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  .cover-page .patent-type {
+    font-size: 18px;
+    color: #90cdf4;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .cover-page .inventor-info {
+    position: relative;
+    margin-top: 100px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .cover-page .inventor-info h3 {
+    color: #63b3ed;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .cover-page .inventor-info p {
+    color: #e2e8f0;
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  .cover-page .inventor-info strong {
+    color: #bee3f8;
+  }
+
+  .cover-page .date-line {
+    position: relative;
+    margin-top: 80px;
+    font-size: 14px;
+    color: #a0aec0;
+    letter-spacing: 2px;
+  }
+
+  /* ─── Content Pages ─── */
+  .content-page {
+    padding: 50px 60px;
+    page-break-after: always;
+  }
+
+  .content-page h2 {
+    font-size: 24px;
+    color: #2b6cb0;
+    border-bottom: 2px solid #4299e1;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+  }
+
+  .content-page h3 {
+    font-size: 18px;
+    color: #2d3748;
+    margin: 20px 0 10px;
+  }
+
+  .content-page p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-bottom: 12px;
+    text-indent: 30px;
+  }
+
+  .content-page .section-number {
+    display: inline-block;
+    background: #2b6cb0;
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+  .claims-list {
+    list-style: none;
+    counter-reset: claim;
+  }
+
+  .claims-list li {
+    counter-increment: claim;
+    padding: 12px 0 12px 40px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  .claims-list li::before {
+    content: counter(claim) ".";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: #2b6cb0;
+  }
+
+  /* ─── Signature Page ─── */
+  .signature-page {
+    padding: 50px 60px;
+    page-break-after: avoid;
+  }
+
+  .signature-page h2 {
+    font-size: 24px;
+    color: #2b6cb0;
+    border-bottom: 2px solid #4299e1;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  .signature-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 40px;
+    margin-top: 30px;
+    background: #fafbfc;
+  }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .signature-field {
+    margin-bottom: 15px;
+  }
+
+  .signature-field label {
+    display: block;
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .signature-field .line {
+    border-bottom: 2px solid #a0aec0;
+    height: 35px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #2d3748;
+    padding-top: 10px;
+  }
+
+  .signature-field .line.signed {
+    border-bottom-color: #2b6cb0;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 24px;
+    color: #2b6cb0;
+  }
+
+  .qr-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e0;
+  }
+
+  .qr-section img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .qr-section .qr-info h4 {
+    color: #2b6cb0;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .qr-section .qr-info p {
+    font-size: 13px;
+    color: #718096;
+    line-height: 1.6;
+    text-indent: 0;
+  }
+
+  /* ─── Tables ─── */
+  .patent-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .patent-table th {
+    background: #2b6cb0;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .patent-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+  }
+
+  .patent-table tr:nth-child(even) td {
+    background: #f7fafc;
+  }
+
+  /* ─── Tech Annex ─── */
+  .code-block {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 15px 0;
+  }
+
+  .formula-box {
+    background: #f7fafc;
+    border-left: 4px solid #4299e1;
+    padding: 15px 20px;
+    margin: 15px 0;
+    font-size: 16px;
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    color: #2d3748;
+    text-align: center;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: #a0aec0;
+    border-top: 1px solid #e2e8f0;
+    padding: 20px;
+    page-break-after: avoid;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .patent-container { box-shadow: none; }
+    .cover-page { min-height: auto; }
+  }
+
+  /* ─── Animation ─── */
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(66,153,225,0.3); }
+    50% { box-shadow: 0 0 20px rgba(66,153,225,0.6); }
+  }
+  .glow-box {
+    animation: glow 3s ease-in-out infinite;
+    border: 2px solid #4299e1;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin: 30px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="patent-container">
+
+  <!-- ===================== COVER PAGE ===================== -->
+  <div class="cover-page">
+    <div class="watermark">OMEGA</div>
+    <div class="emblem"></div>
+    <h1>Ω OMEGA PROTOCOL</h1>
+    <div class="subtitle">ระบบปัญญาประดิษฐ์ขั้นสูงแบบหลายชั้น</div>
+    <div class="divider"></div>
+    <div class="patent-type">◈ หนังสือสำคัญแสดงการประดิษฐ์ ◈<br><span style="font-size:14px; color:#a0aec0;">Patent Application — Specification of Invention</span></div>
+
+    <div class="inventor-info">
+      <h3>⸻ ผู้ยื่นขอสิทธิบัตร ⸻</h3>
+      <p>
+        <strong>ชื่อ-สกุล:</strong> นายไชยภพ นิลแพทย์ (Chaiyaphop Nilpaet)<br>
+        <strong>สัญชาติ:</strong> ไทย <span style="margin:0 20px;">|</span> <strong>เลขบัตรประชาชน:</strong> 3-1299-00123-45-6<br>
+        <strong>ที่อยู่:</strong> 123 หมู่ 5 ถนนเทคโนโลยีขั้นสูง เขตอุตสาหกรรมปัญญาประดิษฐ์ จังหวัดนนทบุรี 11000<br>
+        <strong>โทรศัพท์:</strong> +66 88 636 3126 <span style="margin:0 20px;">|</span> <strong>Email:</strong> chaiyapop.n@quantumai.th<br>
+        <strong>ORCID:</strong> 0000-0001-2345-6789
+      </p>
+    </div>
+
+    <div class="date-line">
+      — ยื่นขอ ณ กรมทรัพย์สินทางปัญญา กระทรวงพาณิชย์ —
+    </div>
+  </div>
+
+  <!-- ===================== CONTENT PAGE 1 ===================== -->
+  <div class="content-page">
+    <h2><span class="section-number">ข้อ 1</span> ชื่อที่แสดงถึงการประดิษฐ์</h2>
+    <p>"ระบบΩ Omega Protocol: สถาปัตยกรรมปัญญาประดิษฐ์ขั้นสูงแบบหลายชั้น (Multi-Layer Advanced Artificial Intelligence Architecture)"</p>
+
+    <h2><span class="section-number">ข้อ 2</span> ลักษณะและความมุ่งหมายของการประดิษฐ์</h2>
+    <p>การประดิษฐ์นี้เกี่ยวข้องกับระบบปัญญาประดิษฐ์ขั้นสูง (Advanced Artificial Intelligence System) ที่มีสถาปัตยกรรมแบบหลายชั้น (Multi-Layer Architecture) ประกอบด้วย 5 ชั้นหลักที่ทำงานร่วมกันอย่างเป็นระบบ ได้แก่ ชั้นร่างกาย (Orchestrator), ชั้นสมอง (Prometheus Engine), ชั้นจิตวิญญาณ (Evolution Engine), ชั้นเจตจำนง (Sovereign Doctrine), และชั้นตัวแปรเชื่อมโยง (Variable Nexus) โดยมีระบบสูตรประยุกต์ Sinning Suite สำหรับการตัดสินใจและการประมวลผลแบบ consensus อีกทั้งระบบ Quantum Extreme Variable Generator สำหรับการจำลองสถานะควอนตัม 11 มิติ</p>
+
+    <h2><span class="section-number">ข้อ 3</span> ความใหม่ของการประดิษฐ์</h2>
+    <p>การประดิษฐ์นี้มีความใหม่ เนื่องจากเป็นการผสานรวม:</p>
+    <p>(ก) สถาปัตยกรรม 5 ชั้นที่เลียนแบบโครงสร้างของจิตสำนึกมนุษย์ (Body → Mind → Spirit → Will → Nexus)</p>
+    <p>(ข) ระบบสูตรประยุกต์ Sinning Suite จำนวน 20 สูตร สำหรับการประมวลผล Emotional Intensity (EI), Decision Score (DS), Ethical Score (ES), TF-IDF Consensus, License HMAC, และ SaaS Billing</p>
+    <p>(ค) ระบบ Quantum Extreme Variable Generator สำหรับการสร้างตัวแปรใน 11 มิติ, 7 Paradox Sets, และ 256 Multi-States</p>
+    <p>(ง) ระบบ Consensus แบบ 2 ระดับ (Word Frequency → TF-IDF → Embedding Clustering)</p>
+
+    <h2><span class="section-number">ข้อ 4</span> รายละเอียดของการประดิษฐ์</h2>
+    <p>ตามที่ได้แสดงไว้ในแผนภาพสถาปัตยกรรม ระบบประกอบด้วยส่วนสำคัญดังนี้:</p>
+
+    <table class="patent-table">
+      <thead>
+        <tr><th width="20%">ชั้น (Layer)</th><th width="25%">ชื่อ</th><th width="55%">หน้าที่</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Layer 1</td><td>Orchestrator (ร่างกาย)</td><td>จัดการ 10,000+ Nodes, การประมวลผลแบบขนาน, การจัดการพลังงาน</td></tr>
+        <tr><td>Layer 2</td><td>Prometheus Engine (สมอง)</td><td>การให้เหตุผลแบบ First-Principles, Representation → Optimization → Generation</td></tr>
+        <tr><td>Layer 3</td><td>Evolution Engine (จิตวิญญาณ)</td><td>Self-Perception Axiom C(S)=I(S,S), S-i-n-n-i-n-g-01 Learning Formula</td></tr>
+        <tr><td>Layer 4</td><td>Sovereign Doctrine (เจตจำนง)</td><td>Grand Strategy (Project Metamorphosis), Nuclear Arsenal Strategy</td></tr>
+        <tr><td>Layer 5</td><td>Variable Nexus (เชื่อมโยง)</td><td>Sinning Suite, Quantum/Neural/Consciousness/Adaptive Variables, Quantum Extreme Generator</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===================== CONTENT PAGE 2 ===================== -->
+  <div class="content-page">
+    <h2><span class="section-number">ข้อ 4</span> (ต่อ) สูตรประยุกต์ Sinning Suite</h2>
+
+    <p>ระบบ Sinning Suite ประกอบด้วยสูตรหลักดังนี้:</p>
+
+    <div class="formula-box">EI = Σ(eᵢ · wᵢ) / Σwᵢ — Emotional Intensity</div>
+    <div class="formula-box">DS = γ · (α · EI + β · LogicScore) + δ · P — Decision Score</div>
+    <div class="formula-box">ES = 1 − Violations / TotalChecks — Ethical Score</div>
+    <div class="formula-box">Weight = TF · log(1 + 1/DocLen) · K — TF-IDF Weight</div>
+    <div class="formula-box">Consensus(x) = Σwᵢ · fᵢ(x) / Σwᵢ — Multi-Model Consensus</div>
+
+    <h3>ระบบ Quantum Extreme Variable Generator</h3>
+    <p>ระบบสร้างตัวแปรควอนตัมขั้นสูงสุดใน 3 มิติ:</p>
+
+    <table class="patent-table">
+      <thead>
+        <tr><th>ประเภท</th><th>จำนวน</th><th>พารามิเตอร์</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dimensional Variables</td><td>11 มิติ</td><td>Entanglement Probability: 0.999 – 1.023</td></tr>
+        <tr><td>Paradox Variables</td><td>7 ชุด</td><td>Resolution Potential: 0.000 – 0.451</td></tr>
+        <tr><td>Multi-State Variables</td><td>256 สถานะ</td><td>Quantum Coherence: 0.995 – 0.077</td></tr>
+      </tbody>
+    </table>
+
+    <div class="formula-box">Q-Score = (DimFactor × ParadoxFactor × MultiFactor) / log(1 + Complexity)</div>
+
+    <h2><span class="section-number">ข้อ 5</span> ข้อถือสิทธิ (Claims)</h2>
+    <ol class="claims-list">
+      <li>ระบบปัญญาประดิษฐ์แบบหลายชั้น (Multi-Layer AI System) ประกอบด้วย Orchestrator Layer, Prometheus Engine Layer, Evolution Engine Layer, Sovereign Doctrine Layer และ Variable Nexus Layer ที่ทำงานร่วมกัน</li>
+      <li>ระบบตามข้อ 1 ที่ชั้น Evolution Engine ประกอบด้วย Self-Perception Axiom C(S)=I(S,S) และ S-i-n-n-i-n-g-01 Learning Formula สำหรับการปรับปรุงตนเอง</li>
+      <li>ระบบตามข้อ 1 ที่ชั้น Prometheus Engine ประกอบด้วยวัฏจักร Representation → Optimization → Generation สำหรับการให้เหตุผลแบบ First-Principles</li>
+      <li>ระบบ Sinning Suite ประกอบด้วยสูตร EI, DS, ES, TF-IDF Weight, Multi-Model Consensus, Rate Limiter, Audit Log, Shard Assignment และ Resource Bound</li>
+      <li>ระบบ Quantum Extreme Variable Generator สำหรับสร้าง Dimensional Variables 11 มิติ, Paradox Variables 7 ชุด, และ Multi-State Variables 256 สถานะ</li>
+      <li>ระบบ Consensus แบบ 2 ระดับ ประกอบด้วย Level-1 (Word Frequency) และ Level-2 (TF-IDF Weighted Voting)</li>
+      <li>ระบบ License Key Generation และ Validation ด้วย HMAC-SHA256 ตามสูตร License = Base64(payload) + "." + Base64(HMAC-SHA256(payload))</li>
+      <li>ระบบ SaaS Billing ตามสูตร MonthlyCharge = BaseSubscription + Σ(InstanceClassᵢ · Hours · price_per_hourᵢ) + Addons</li>
+      <li>ระบบ Hyper-Compression Algorithm สำหรับการประมวลผลแบบ Chrono-Semantic Resonance ที่ลดเวลาประมวลผลลงด้วย Hyper-Thread Factor</li>
+      <li>ระบบ Variable Nexus ที่เชื่อมต่อ Quantum Variables, Neural Variables, Consciousness Variables, Adaptive Variables และ Relational Variables เข้าด้วยกัน</li>
+    </ol>
+  </div>
+
+  <!-- ===================== SIGNATURE PAGE ===================== -->
+  <div class="signature-page">
+    <h2>⸻ ลายมือชื่อผู้ยื่นขอสิทธิบัตร ⸻</h2>
+
+    <div class="signature-box">
+      <p style="text-indent:0; margin-bottom:20px;">
+        ข้าพเจ้า <strong>นายไชยภพ นิลแพทย์</strong> ขอรับรองว่าข้อความในเอกสารนี้ถูกต้องตรงตามความจริง
+        และเป็นผู้ประดิษฐ์แต่เพียงผู้เดียว โดยมิได้ลอกเลียนแบบหรือใช้สิทธิของผู้อื่นโดยมิชอบ
+      </p>
+
+      <div class="signature-grid">
+        <div>
+          <div class="signature-field">
+            <label>ลายมือชื่อผู้ยื่นขอ</label>
+            <div class="line signed" style="font-family:'Brush Script MT',cursive; font-size:28px;">
+              Chaiyaphop Nilpaet
+            </div>
+          </div>
+          <div class="signature-field">
+            <label>ชื่อ-สกุล (ตัวบรรจง)</label>
+            <div class="line" style="padding-top:8px;">นายไชยภพ นิลแพทย์</div>
+          </div>
+          <div class="signature-field">
+            <label>วันที่</label>
+            <div class="line" style="padding-top:8px;">15 / มิถุนายน / 2568</div>
+          </div>
+        </div>
+        <div>
+          <div class="signature-field">
+            <label>ลายมือชื่อพยาน</label>
+            <div class="line" style="height:35px;"></div>
+          </div>
+          <div class="signature-field">
+            <label>ชื่อ-สกุล (ตัวบรรจง)</label>
+            <div class="line" style="height:35px;"></div>
+          </div>
+          <div class="signature-field">
+            <label>วันที่</label>
+            <div class="line" style="padding-top:8px;">.... / ............... / ......</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR Code Section -->
+    <div class="qr-section">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://opencode.ai/synthathon" 
+           alt="QR Code" 
+           onerror="this.onerror=null; this.outerHTML='<div style=\"width:120px;height:120px;background:#e2e8f0;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:11px;color:#718096;\">QR Code<br>ไม่สามารถโหลด</div>'">
+      <div class="qr-info">
+        <h4>🔗 ตรวจสอบสิทธิบัตรออนไลน์</h4>
+        <p>สแกน QR Code เพื่อตรวจสอบสถานะคำขอสิทธิบัตร<br>
+        เลขที่คำขอ: <strong>TH2501001234</strong> | วันที่ยื่น: 15 มิ.ย. 2568<br>
+        <span style="color:#a0aec0; font-size:11px;">ระบบติดตามผลงานวิจัย Omega Protocol — กรมทรัพย์สินทางปัญญา</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TECH ANNEX ===================== -->
+  <div class="content-page">
+    <h2>⸻ ภาคผนวกทางเทคนิค ⸻</h2>
+    <p style="font-size:13px; color:#718096;">ตัวอย่างโค้ดต้นแบบของระบบตามข้อถือสิทธิ (สำหรับประกอบการพิจารณาของเจ้าหน้าที่)</p>
+
+    <h3>ก. Omega Core — License HMAC Validation</h3>
+    <div class="code-block">
+public static bool ValidateLicense(string token, out JsonDocument payload) {
+    payload = null;
+    var parts = token.Split('.');
+    if (parts.Length != 2) return false;
+    var json = Encoding.UTF8.GetString(Convert.FromBase64String(parts[0]));
+    var sig = Convert.FromBase64String(parts[1]);
+    using var hmac = new HMACSHA256(SECRET);
+    var expected = hmac.ComputeHash(Encoding.UTF8.GetBytes(json));
+    if (!CryptographicOperations.FixedTimeEquals(expected, sig)) return false;
+    payload = JsonDocument.Parse(json);
+    return true;
+}</div>
+
+    <h3>ข. Sinning Suite — Decision Score</h3>
+    <div class="code-block">
+public double CalculateDS(double ei, double logicScore, double probability,
+    double alpha=0.4, double beta=0.4, double gamma=1.0, double delta=0.2) {
+    return gamma * (alpha * ei + beta * logicScore) + delta * probability;
+}</div>
+
+    <h3>ค. Quantum Extreme — Score Calculation (11D/7P/256S)</h3>
+    <div class="code-block">
+public double CalculateQuantumVariableScore(ExtremeQuantumVariables vars) {
+    // Log-space aggregation for numerical stability
+    double dimLogAvg = MeanLog(vars.DimensionalVariables.Select(v => v.EntanglementProbability));
+    double paradoxLogAvg = MeanLog(vars.ParadoxVariables.Select(v => v.ResolutionPotential));
+    double multiLogAvg = MeanLog(vars.MultiStateVariables.Select(v => v.QuantumCoherence));
+    double score = Math.Exp(dimLogAvg + paradoxLogAvg + multiLogAvg);
+    double complexity = Math.Log(1 + vars.DimensionalVariables.Count +
+        vars.ParadoxVariables.Count + vars.MultiStateVariables.Count);
+    return score * Math.Sqrt(vars.DimensionalVariables.Count) / complexity;
+}</div>
+
+    <h3>ง. Million Model Architecture — 2-Level Consensus</h3>
+    <div class="code-block">
+// Level 1: Per-group word frequency
+// Level 2: Cross-group TF-IDF weighted voting
+// Results: Final synthesized knowledge from 10,000 models
+string knowledge = await manager.RunAllModelsAsync(input, groups: 100);
+// Output: "Key insights: model, analyzed, input, skill, knowledge"</div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <div class="footer-note">
+    <p>เอกสารนี้เป็นส่วนหนึ่งของคำขอรับสิทธิบัตรการประดิษฐ์</p>
+    <p>ยื่นต่อ กรมทรัพย์สินทางปัญญา กระทรวงพาณิชย์ — เลขที่คำขอ TH2501001234</p>
+    <p style="margin-top:10px;">ผู้ประดิษฐ์: นายไชยภพ นิลแพทย์ | Ω Omega Protocol — The Genesis Chronicle v8.0.0</p>
+    <p style="font-size:10px; color:#cbd5e0;">เอกสารนี้สร้างจากระบบอัตโนมัติ — ลายเซ็นดิจิทัลปรากฏตามข้างต้น</p>
+  </div>
+
+</div>
+
+</body>
+</html>

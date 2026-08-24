@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คอร์ส — ออกแบบระบบ AI แบบหลายชั้นที่เรียนรู้ตัวเองได้</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d0d1a; color:#e2e8f0; font-family:'Sarabun','Segoe UI',sans-serif; line-height:1.7; }
+  .hero { text-align:center; padding:70px 20px 50px; background:radial-gradient(ellipse at top,#16213e,#0d0d1a); border-bottom:1px solid #1a1a2e; }
+  .hero .tag { color:#64ffda; letter-spacing:3px; font-size:13px; }
+  .hero h1 { font-size:38px; margin:12px 0; color:#fff; }
+  .hero h1 span { color:#e94560; }
+  .hero p { color:#8892b0; max-width:640px; margin:0 auto 24px; }
+  .cta { display:inline-block; background:#e94560; color:#fff; padding:14px 36px; border-radius:12px; font-size:17px; font-weight:700; text-decoration:none; }
+  .cta:hover { filter:brightness(1.15); }
+  .cta.note { background:#2d1b69; margin-left:10px; font-size:14px; font-weight:400; }
+  .wrap { max-width:1000px; margin:0 auto; padding:40px 20px; }
+  h2 { color:#e94560; font-size:24px; margin-bottom:20px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:40px; }
+  .stat { background:#1a1a2e; border:1px solid #0f3460; border-radius:12px; padding:18px; text-align:center; }
+  .stat .n { font-size:28px; font-weight:700; color:#e94560; }
+  .stat .t { font-size:13px; color:#718096; }
+  .mods { display:grid; gap:12px; margin-bottom:40px; }
+  .mod { background:#16213e; border-left:4px solid #533483; border-radius:10px; padding:14px 18px; }
+  .mod b { color:#fff; display:block; }
+  .mod span { color:#8892b0; font-size:14px; }
+  .price-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-bottom:40px; }
+  .price { background:#1a1a2e; border:1px solid #0f3460; border-radius:14px; padding:24px; text-align:center; }
+  .price.featured { border:2px solid #e94560; transform:scale(1.03); }
+  .price h3 { color:#fff; }
+  .price .amt { font-size:30px; font-weight:700; color:#e94560; margin:10px 0; }
+  .price ul { list-style:none; font-size:13px; color:#8892b0; text-align:left; padding:0 10px; }
+  .price li { padding:4px 0; }
+  .price .btn { display:block; margin-top:16px; background:#e94560; color:#fff; text-decoration:none; padding:10px; border-radius:10px; font-weight:600; }
+  .price.featured .btn { background:#64ffda; color:#0d0d1a; }
+  .faq { margin-bottom:40px; }
+  .faq details { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:14px 18px; margin-bottom:10px; }
+  .faq summary { cursor:pointer; color:#fff; font-weight:600; }
+  .faq p { color:#8892b0; font-size:14px; margin-top:8px; }
+  footer { text-align:center; color:#525f7a; font-size:12px; padding:20px; border-top:1px solid #1a1a2e; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="tag">คอร์สออนไลน์สำหรับ Developer / Data Scientist</div>
+    <h1>ออกแบบระบบ AI แบบหลายชั้น <span>ที่เรียนรู้ตัวเองได้</span></h1>
+    <p>จากแผนภาพ 4 ชั้น (Body → Mind → Spirit → Will) สู่โค้ดจริง: เรียนสร้างระบบ Agent ที่เก่งขึ้นเองทุกวัน ด้วย S-i-n-n-i-n-g-01 Learning Formula</p>
+    <a class="cta" href="#pricing">🎟 จอง Early Bird — 1,990 บาท</a>
+    <a class="cta note" href="เดโม_ซิมูเลเตอร์_เอเจนต์.html">▶ ลองเดโมฟรี</a>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">8</div><div class="t">สัปดาห์</div></div>
+      <div class="stat"><div class="n">40+</div><div class="t">ชั่วโมงเรียน</div></div>
+      <div class="stat"><div class="n">62</div><div class="t">สูตรคณิตศาสตร์</div></div>
+      <div class="stat"><div class="n">1000</div><div class="t">Agent ใน Workshop</div></div>
+    </div>
+
+    <h2>📚 หลักสูตร 8 สัปดาห์</h2>
+    <div class="mods">
+      <div class="mod"><b>M0 — ปฐมนิเทศ (ฟรี)</b><span>ภาพรวมสถาปัตยกรรม 4 ชั้น และวิวัฒนาการ The Collective → The Weaver</span></div>
+      <div class="mod"><b>M1 — ทำไมต้อง "หลายชั้น"</b><span>ข้อจำกัดของระบบโมเดลเดียว · การแยกหน้าที่ Body/Mind/Spirit/Will</span></div>
+      <div class="mod"><b>M2 — Layer 1: Orchestrator (ร่างกาย)</b><span>Agent หลายตัว · Concurrency · Workshop จำลอง Agent 1,000 ตัว</span></div>
+      <div class="mod"><b>M3 — Layer 2: Prometheus (สมอง)</b><span>First-Principles · Representation → Optimization → Generation</span></div>
+      <div class="mod"><b>M4 — Layer 3: Evolution (จิตวิญญาณ)</b><span>Self-Perception Axiom C(S)=I(S,S) · S-i-n-n-i-n-g-01 Formula</span></div>
+      <div class="mod"><b>M5 — Layer 4: Doctrine (เจตจำนง)</b><span>Governance / Ethics / Human-in-the-loop สำหรับ AI</span></div>
+      <div class="mod"><b>M6 — จากสูตรสู่โค้ดจริง</b><span>Mermaid / PlantUML · React Dashboard · Portfolio จริง</span></div>
+      <div class="mod"><b>M7 — โปรเจกต์จบ</b><span>ออกแบบสถาปัตยกรรม AI 4 ชั้นของตัวเอง + demo ที่รันได้</span></div>
+    </div>
+
+    <h2 id="pricing">💰 แพ็กเกจ</h2>
+    <div class="price-grid">
+      <div class="price">
+        <h3>Early Bird</h3>
+        <div class="amt">1,990 บาท</div>
+        <ul><li>คอร์สเต็ม 8 สัปดาห์</li><li>เทมเพลตเอกสารสถาปัตยกรรม</li><li>สูตร 62 สูตร PDF</li><li>สิทธิ์เข้าชุมชน Discord</li></ul>
+        <a class="btn" href="#">จองเลย</a>
+      </div>
+      <div class="price featured">
+        <h3>มาตรฐาน ⭐</h3>
+        <div class="amt">3,500 บาท</div>
+        <ul><li>ทุกอย่างใน Early Bird</li><li>ไฟล์โค้ด + Workshop ครบ</li><li>ใบรับรองจบคอร์ส</li><li>อัปเดตเนื้อหาฟรี 1 ปี</li></ul>
+        <a class="btn" href="#">สมัครเลย</a>
+      </div>
+      <div class="price">
+        <h3>VIP (จำกัด 10 ที่)</h3>
+        <div class="amt">7,900 บาท</div>
+        <ul><li>ทุกอย่างในมาตรฐาน</li><li>โค้ชชิ่ง 1:1 (4 ครั้ง)</li><li>ตรวจ Portfolio 5 ไฟล์</li><li>แนะนำสายงาน AI</li></ul>
+        <a class="btn" href="#">สมัคร VIP</a>
+      </div>
+    </div>
+
+    <h2>❓ คำถามที่พบบ่อย</h2>
+    <div class="faq">
+      <details open><summary>ต้องเก่ง AI มาก่อนไหม?</summary><p>ไม่จำเป็น — แค่มีพื้นฐานการเขียนโปรแกรมบ้าง คอร์สเริ่มจากหลักการพื้นฐานและค่อยๆ ลึกไปจนถึงการเขียนระบบจริง</p></details>
+      <details><summary>เรียนจบแล้วได้อะไร?</summary><p>ได้ Portfolio ผลงานจริง (สถาปัตยกรรม + Dashboard + Agent Simulator) ที่ใช้ยื่นสมัครงานสาย AI/Systems ได้ทันที</p></details>
+      <details><summary>มีใบรับรองไหม?</summary><p>มีใบรับรองจบคอร์สในแพ็กเกจมาตรฐานและ VIP พร้อมลายเซ็นดิจิทัล</p></details>
+      <details><summary>จ่ายยังไง?</summary><p>พร้อมเพย์ / บัตรเครดิต / ผ่อน 0% ผ่านแบงก์ที่ร่วมรายการ</p></details>
+    </div>
+  </div>
+
+  <footer>© 2026 Multi-Layer AI Architect — หน้าเสนอขายคอร์ส สร้างโดยระบบ AI Auto</footer>
+</body>
+</html>

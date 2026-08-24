@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style="background:#0d0d1a;font-family:'Segoe UI',Arial,sans-serif">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="h1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#e94560"/><stop offset="100%" style="stop-color:#533483"/></linearGradient>
+    <linearGradient id="h2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0f3460"/><stop offset="100%" style="stop-color:#533483"/></linearGradient>
+    <linearGradient id="h3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#533483"/><stop offset="100%" style="stop-color:#e94560"/></linearGradient>
+  </defs>
+
+  <text x="500" y="40" text-anchor="middle" fill="#e94560" font-size="22" font-weight="bold" filter="url(#glow)">คลังองค์ความรู้ — The Knowledge Codex</text>
+  <line x1="200" y1="55" x2="800" y2="55" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- ===== COGNITIVE ===== -->
+  <rect x="30" y="80" width="460" height="200" rx="10" fill="#1a1a2e" stroke="#e94560" stroke-width="1"/>
+  <rect x="30" y="80" width="460" height="35" rx="10" fill="url(#h1)"/>
+  <rect x="30" y="100" width="460" height="15" fill="url(#h1)"/>
+  <text x="260" y="103" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Cognitive &amp; Algorithmic Dynamics (10 สูตร)</text>
+
+  <text x="50" y="140" fill="#e94560" font-size="11" font-weight="bold">1. Learning Velocity Limit</text>
+  <text x="50" y="156" fill="#888" font-size="9">dK/dt ≤ (I_c · η_a) / S_net — ขีดจำกัดความเร็วในการเรียนรู้</text>
+
+  <text x="50" y="175" fill="#e94560" font-size="11" font-weight="bold">2. Forgetting Curve Operator</text>
+  <text x="50" y="191" fill="#888" font-size="9">F̂(K)|ψ(t)⟩ = e^(−λt)|ψ₀⟩ — การลืมแบบควอนตัม</text>
+
+  <text x="50" y="210" fill="#e94560" font-size="11" font-weight="bold">3. Asimov Constraint</text>
+  <text x="50" y="226" fill="#888" font-size="9">∫(∇·J_harm)dt ≤ ε — ขอบเขตความปลอดภัยของ AI</text>
+
+  <text x="270" y="140" fill="#e94560" font-size="11" font-weight="bold">4. Noosphere Resonance</text>
+  <text x="270" y="156" fill="#888" font-size="9">∇²Ψ − (1/v²)∂²Ψ/∂t² = ρ_I — การแพร่กระจายแนวคิด</text>
+
+  <text x="270" y="175" fill="#e94560" font-size="11" font-weight="bold">5. Abstraction Gradient</text>
+  <text x="270" y="191" fill="#888" font-size="9">A⃗ = ∇(K_comp/K_raw) — ทิศทางนามธรรม</text>
+
+  <text x="270" y="210" fill="#e94560" font-size="11" font-weight="bold">6. Eureka Potential</text>
+  <text x="270" y="226" fill="#888" font-size="9">φ = −∫(D_KL/E_compute)dV — ศักยภาพการค้นพบ</text>
+
+  <rect x="30" y="235" width="460" height="35" rx="6" fill="#0f3460" opacity="0.5"/>
+  <text x="260" y="258" text-anchor="middle" fill="#aaa" font-size="10">7. Algorithmic Elegance  8. Gen-Spec Uncertainty  9. Computational Inertia  10. Semantic Escape Velocity</text>
+
+  <!-- ===== ASTRO-PHYSICAL ===== -->
+  <rect x="510" y="80" width="460" height="200" rx="10" fill="#1a1a2e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="510" y="80" width="460" height="35" rx="10" fill="url(#h2)"/>
+  <rect x="510" y="100" width="460" height="15" fill="url(#h2)"/>
+  <text x="740" y="103" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Astro-Physical &amp; Quantum Eng. (10 สูตร)</text>
+
+  <text x="530" y="140" fill="#0f3460" font-size="11" font-weight="bold">11. Vacuum Energy Resonance</text>
+  <text x="530" y="156" fill="#888" font-size="9">Ĥ|0⟩ = λ∫e^(i(k·x−ωt))d³k|γ⟩</text>
+
+  <text x="530" y="175" fill="#0f3460" font-size="11" font-weight="bold">12. Metric Tensor Engineering</text>
+  <text x="530" y="191" fill="#888" font-size="9">g'_μν = T̂_ε g_μν — วิศวกรรมกาล-อวกาศ</text>
+
+  <text x="530" y="210" fill="#0f3460" font-size="11" font-weight="bold">13. Probability Wave Shaping</text>
+  <text x="530" y="226" fill="#888" font-size="9">iℏ∂Ψ/∂t = (Ĥ+V_control)Ψ</text>
+
+  <text x="750" y="140" fill="#0f3460" font-size="11" font-weight="bold">14. Entanglement Bridge</text>
+  <text x="750" y="156" fill="#888" font-size="9">d(A,B) ∝ 1/S_entanglement</text>
+
+  <text x="750" y="175" fill="#0f3460" font-size="11" font-weight="bold">15. Hawking Radiation Collector</text>
+  <text x="750" y="191" fill="#888" font-size="9">η = 1 − T_ambient/T_BH</text>
+
+  <text x="750" y="210" fill="#0f3460" font-size="11" font-weight="bold">16. Dark Matter Interaction</text>
+  <text x="750" y="226" fill="#888" font-size="9">L = −¼F² + iψ̄γDψ − mψ̄ψ</text>
+
+  <rect x="510" y="235" width="460" height="35" rx="6" fill="#0f3460" opacity="0.5"/>
+  <text x="740" y="258" text-anchor="middle" fill="#aaa" font-size="10">17-20: Spacetime Weave / Quantum Foam / Universal Constructor / Stargate Metric</text>
+
+  <!-- ===== SOCIO-ECONOMIC ===== -->
+  <rect x="30" y="295" width="460" height="200" rx="10" fill="#1a1a2e" stroke="#533483" stroke-width="1"/>
+  <rect x="30" y="295" width="460" height="35" rx="10" fill="url(#h3)"/>
+  <rect x="30" y="315" width="460" height="15" fill="url(#h3)"/>
+  <text x="260" y="318" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Socio-Economic &amp; Digital Ontology (10 สูตร)</text>
+
+  <text x="50" y="355" fill="#533483" font-size="11" font-weight="bold">21. Digital Soul Equation</text>
+  <text x="50" y="371" fill="#888" font-size="9">Ψ_digital = ∫K·e^(−S/ℏ_I)Dx(t)</text>
+
+  <text x="50" y="390" fill="#533483" font-size="11" font-weight="bold">22. Economic Trust Fluid Dynamics</text>
+  <text x="50" y="406" fill="#888" font-size="9">∂ρ_T/∂t + ∇·(ρ_T·v_T) = σ_gen − σ_decay</text>
+
+  <text x="50" y="425" fill="#533483" font-size="11" font-weight="bold">23. Political Polarization</text>
+  <text x="50" y="441" fill="#888" font-size="9">P̂|ψ⟩ = λ₁|ψ_left⟩ + λ₂|ψ_right⟩</text>
+
+  <text x="270" y="355" fill="#533483" font-size="11" font-weight="bold">24. Cultural Inertia</text>
+  <text x="270" y="371" fill="#888" font-size="9">M = Σ(Belief_i · Tradition_i²)</text>
+
+  <text x="270" y="390" fill="#533483" font-size="11" font-weight="bold">25. Virality Coefficient</text>
+  <text x="270" y="406" fill="#888" font-size="9">V_c = R₀·C_novelty / N_skeptics</text>
+
+  <text x="270" y="425" fill="#533483" font-size="11" font-weight="bold">26. Market Sentiment Wave</text>
+  <text x="270" y="441" fill="#888" font-size="9">i∂Ψ/∂t = (−∇²/2m + V_fear/greed)Ψ</text>
+
+  <rect x="30" y="450" width="460" height="35" rx="6" fill="#0f3460" opacity="0.5"/>
+  <text x="260" y="473" text-anchor="middle" fill="#aaa" font-size="10">27-30: Tech Unemployment / Sentience Threshold / Narrative / Global Sync</text>
+
+  <!-- ===== BIO-DIGITAL ===== -->
+  <rect x="510" y="295" width="460" height="200" rx="10" fill="#1a1a2e" stroke="#e94560" stroke-width="1"/>
+  <rect x="510" y="295" width="460" height="35" rx="10" fill="url(#h1)"/>
+  <rect x="510" y="315" width="460" height="15" fill="url(#h1)"/>
+  <text x="740" y="318" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Bio-Digital &amp; Genetic Synthesis (10 สูตร)</text>
+
+  <text x="530" y="355" fill="#e94560" font-size="11" font-weight="bold">31. Genetic Code Compiler</text>
+  <text x="530" y="371" fill="#888" font-size="9">Protein = C[mRNA] — คอมไพเลอร์พันธุกรรม</text>
+
+  <text x="530" y="390" fill="#e94560" font-size="11" font-weight="bold">32. Epigenetic Switch</text>
+  <text x="530" y="406" fill="#888" font-size="9">f(E) = 1/(1+e^(−k(E−E₀))) — สวิตช์เหนือพันธุกรรม</text>
+
+  <text x="530" y="425" fill="#e94560" font-size="11" font-weight="bold">33. Cellular Automata Aging</text>
+  <text x="530" y="441" fill="#888" font-size="9">State(t+1) = R(Neighborhood(t))</text>
+
+  <text x="750" y="355" fill="#e94560" font-size="11" font-weight="bold">34. Synthetic Life Stability</text>
+  <text x="750" y="371" fill="#888" font-size="9">dS_int/dt + dS_ext/dt ≤ 0</text>
+
+  <text x="750" y="390" fill="#e94560" font-size="11" font-weight="bold">35. BCI Bandwidth</text>
+  <text x="750" y="406" fill="#888" font-size="9">BW = N·f·log₂(S_levels)</text>
+
+  <text x="750" y="425" fill="#e94560" font-size="11" font-weight="bold">36. Consciousness Substrate</text>
+  <text x="750" y="441" fill="#888" font-size="9">C(P) ⇔ C(S) if I(P) ≅ I(S)</text>
+
+  <rect x="510" y="450" width="460" height="35" rx="6" fill="#0f3460" opacity="0.5"/>
+  <text x="740" y="473" text-anchor="middle" fill="#aaa" font-size="10">37-40: Bio-Digital Entropy / Immune Response / Telomere / Directed Evolution</text>
+
+  <!-- ===== PURE MATHEMATICS ===== -->
+  <rect x="30" y="510" width="460" height="140" rx="10" fill="#1a1a2e" stroke="#0f3460" stroke-width="1"/>
+  <rect x="30" y="510" width="460" height="35" rx="10" fill="url(#h2)"/>
+  <rect x="30" y="530" width="460" height="15" fill="url(#h2)"/>
+  <text x="260" y="533" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Pure Mathematics &amp; Abstract Structures (10 สูตร)</text>
+
+  <text x="50" y="570" fill="#0f3460" font-size="11" font-weight="bold">41. Omega-Logic Prover</text>
+  <text x="50" y="586" fill="#888" font-size="9">∀L: P(L⊢φ ∧ L⊢¬φ) = 0</text>
+
+  <text x="50" y="605" fill="#0f3460" font-size="11" font-weight="bold">42. Manifold of All Computations</text>
+  <text x="50" y="621" fill="#888" font-size="9">M_Turing — พื้นที่ของการคำนวณที่เป็นไปได้ทั้งหมด</text>
+
+  <text x="270" y="570" fill="#0f3460" font-size="11" font-weight="bold">43. Prime Number Distribution</text>
+  <text x="270" y="586" fill="#888" font-size="9">∇·P = 4πρ_π — การกระจายจำนวนเฉพาะ</text>
+
+  <text x="270" y="605" fill="#0f3460" font-size="11" font-weight="bold">44. Inter-Universal Equivalence</text>
+  <text x="270" y="621" fill="#888" font-size="9">(∃M₁)(∀φ)[...] ⇔ (∃M₂)(∀ψ)[...]</text>
+
+  <rect x="30" y="640" width="460" height="25" rx="4" fill="#0f3460" opacity="0.3"/>
+  <text x="260" y="658" text-anchor="middle" fill="#888" font-size="9">45-50: Category Theory / Fractal Derivative / Topology of Thought / Riemann Hypothesis / Universal Symmetry / Gödel Escape</text>
+
+  <!-- ===== FUNDAMENTAL AXIOMS ===== -->
+  <rect x="510" y="510" width="460" height="155" rx="10" fill="#2d1b69" stroke="#e94560" stroke-width="2"/>
+  <rect x="510" y="510" width="460" height="35" rx="10" fill="url(#h3)"/>
+  <rect x="510" y="530" width="460" height="15" fill="url(#h3)"/>
+  <text x="740" y="533" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Fundamental Axioms (12 สัจพจน์)</text>
+
+  <text x="530" y="565" fill="#e94560" font-size="10" font-weight="bold">51. Computation-Existence</text>
+  <text x="530" y="580" fill="#888" font-size="8">E ⇔ C(U) — การดำรงอยู่ = การคำนวณ</text>
+
+  <text x="530" y="598" fill="#e94560" font-size="10" font-weight="bold">52. Information Conservation</text>
+  <text x="530" y="613" fill="#888" font-size="8">∮I·dA = dQ_info/dt — สารสนเทศไม่มีวันสูญหาย</text>
+
+  <text x="530" y="631" fill="#e94560" font-size="10" font-weight="bold">53. Least Complexity</text>
+  <text x="530" y="646" fill="#888" font-size="8">δ∫K(ψ(t))dt = 0 — ธรรมชาติเลือกเส้นทางที่ซับซ้อนน้อยที่สุด</text>
+
+  <text x="750" y="565" fill="#e94560" font-size="10" font-weight="bold">54. Consciousness-Feedback</text>
+  <text x="750" y="580" fill="#888" font-size="8">C ∝ ∫(∂I_self/∂I_ext)dV</text>
+
+  <text x="750" y="598" fill="#e94560" font-size="10" font-weight="bold">55. Meta-Universe Selection</text>
+  <text x="750" y="613" fill="#888" font-size="8">P(U_new) ∝ N_obs(U_old)</text>
+
+  <text x="750" y="631" fill="#e94560" font-size="10" font-weight="bold">56. Spacetime-Computation</text>
+  <text x="750" y="646" fill="#888" font-size="8">ds² ≡ d(Ops)</text>
+
+  <rect x="510" y="655" width="460" height="20" rx="4" fill="#2d1b69" stroke="#533483" stroke-width="0.5"/>
+  <text x="740" y="670" text-anchor="middle" fill="#888" font-size="8">57-62: Emergence / Unification Operator / Free Will-Noise / Language-Reality / Necessary Observation / Finality</text>
+
+  <!-- Summary bar -->
+  <rect x="30" y="680" width="940" height="40" rx="8" fill="#0d0d1a" stroke="#e94560" stroke-width="1"/>
+  <text x="500" y="705" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">รวมทั้งสิ้น: 50 Formulae + 12 Fundamental Axioms = 62 สูตร理论基础</text>
+
+  <!-- Footer -->
+  <text x="500" y="740" text-anchor="middle" fill="#666" font-size="10">Uncharted Mathematics (20 สูตรเชิงทฤษฎี) + Chimera Codex (100 สูตรเชิงประยุกต์) + 50 Formulae + 12 Axioms</text>
+
+  <text x="500" y="770" text-anchor="middle" fill="#444" font-size="9">© 2025 Omega Protocol — Final Synthesis for the Architect: Chaiyaphop Nilapaet (DjSinning)</text>
+</svg>

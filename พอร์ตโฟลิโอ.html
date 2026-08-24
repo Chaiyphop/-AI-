@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พอร์ตโฟลิโอ — DjSinning Protocol | สร้างอัตโนมัติด้วย AI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d0d1a; color:#e2e8f0; font-family:'Sarabun','Segoe UI',sans-serif; line-height:1.7; }
+  .wrap { max-width:1080px; margin:0 auto; padding:40px 24px; }
+  .hero { text-align:center; padding:60px 0 40px; }
+  .hero h1 { font-size:42px; color:#e94560; letter-spacing:2px; text-shadow:0 0 30px rgba(233,69,96,.35); }
+  .hero .sub { color:#8892b0; font-size:18px; margin-top:10px; }
+  .badge { display:inline-block; background:rgba(233,69,96,.12); border:1px solid #e94560; color:#e94560; padding:4px 14px; border-radius:20px; font-size:13px; margin-top:16px; }
+  .cta { display:inline-block; background:#e94560; color:#fff; text-decoration:none; padding:12px 26px; border-radius:12px; font-size:15px; font-weight:600; margin-top:20px; }
+  .cta:hover { filter:brightness(1.15); }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:40px 0; }
+  .stat { background:linear-gradient(135deg,#1a1a2e,#16213e); border:1px solid #0f3460; border-radius:12px; padding:20px; text-align:center; }
+  .stat .n { font-size:30px; font-weight:700; color:#e94560; }
+  .stat .t { font-size:13px; color:#8892b0; }
+  h2 { color:#e94560; font-size:24px; margin:48px 0 18px; border-bottom:2px solid #e94560; padding-bottom:8px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  .card { background:linear-gradient(135deg,#1a1a2e,#16213e); border:1px solid #0f3460; border-radius:14px; padding:24px; transition:.25s; }
+  .card:hover { transform:translateY(-4px); border-color:#e94560; box-shadow:0 8px 30px rgba(233,69,96,.15); }
+  .card-icon { font-size:34px; margin-bottom:10px; }
+  .card h3 { color:#fff; font-size:18px; }
+  .tag { display:inline-block; background:#e94560; color:#fff; font-size:11px; padding:2px 10px; border-radius:12px; margin:8px 0; }
+  .card p { font-size:14px; color:#a0aec0; min-height:60px; }
+  .meta { font-size:12px; color:#718096; margin-top:10px; border-top:1px dashed #0f3460; padding-top:8px; }
+  .layer { display:flex; align-items:center; gap:16px; background:#16213e; border-left:4px solid #e94560; border-radius:10px; padding:16px 20px; margin-bottom:12px; }
+  .layer-num { background:#e94560; color:#fff; font-weight:700; padding:4px 12px; border-radius:8px; font-size:14px; }
+  .layer h4 { color:#fff; font-size:17px; }
+  .layer p { color:#8892b0; font-size:14px; }
+  .chips { display:flex; flex-wrap:wrap; gap:10px; }
+  .chip { background:#2d1b69; border:1px solid #533483; color:#c4b5fd; padding:6px 14px; border-radius:20px; font-size:13px; }
+  .tl-item { display:flex; align-items:center; gap:14px; background:#16213e; border-radius:10px; padding:14px 20px; margin-bottom:10px; }
+  .tl-label { background:#533483; color:#fff; font-size:12px; padding:3px 10px; border-radius:8px; }
+  .tl-thai { color:#718096; font-size:13px; }
+  .fig { background:#0d0d1a; border:1px solid #1a1a2e; border-radius:12px; padding:10px; margin-bottom:16px; }
+  .fig-cap { text-align:center; color:#8892b0; font-size:13px; padding:6px 0 2px; }
+  .src-links { display:flex; flex-wrap:wrap; gap:10px; }
+  .src-link { background:#16213e; border:1px solid #0f3460; color:#63b3ed; text-decoration:none; font-size:13px; padding:8px 16px; border-radius:20px; transition:.2s; }
+  .src-link:hover { border-color:#e94560; color:#e94560; }
+  footer { text-align:center; color:#525f7a; font-size:12px; margin-top:60px; padding-top:20px; border-top:1px solid #1a1a2e; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>DJ SINNING PROTOCOL</h1>
+    <p class="sub">สถาปัตยกรรมระบบปัญญาประดิษฐ์หลายชั้น — จากคอนเซ็ปต์สู่โค้ดจริง</p>
+    <span class="badge">✨ สร้างอัตโนมัติด้วยระบบ AI Auto</span>
+    <div><a class="cta" href="เดโม_ซิมูเลเตอร์_เอเจนต์.html" target="_blank">▶ เปิดเดโม Agent Simulator</a></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="t">โปรเจกต์</div></div>
+    <div class="stat"><div class="n">4</div><div class="t">ชั้นสถาปัตยกรรม</div></div>
+    <div class="stat"><div class="n">62</div><div class="t">สูตรคณิตศาสตร์</div></div>
+    <div class="stat"><div class="n">1000</div><div class="t">Agent จำลอง</div></div>
+  </div>
+
+  <h2>โปรเจกต์หลัก</h2>
+  <div class="grid">
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>Ω Omega Protocol</h3>
+        <span class="tag">สิทธิบัตร AI หลายชั้น</span>
+        <p>ระบบปัญญาประดิษฐ์แบบหลายชั้น (Body→Mind→Spirit→Will→Nexus) พร้อม Sinning Suite 20 สูตร และ Quantum Extreme Generator (11 มิติ / 7 Paradox / 256 สถานะ)</p>
+        <div class="meta">ข้อถือสิทธิ 10 ข้อ</div>
+      </div>      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>พิธีสารดีเจซินนิ่ง v8.0.0</h3>
+        <span class="tag">C# Agent Ecosystem</span>
+        <p>โปรแกรมจำลองระบบ Agent 1000 ตัว (128 concurrent) ที่เรียนรู้ตัวเองด้วย S-i-n-n-i-n-g-01 Learning Formula และ Self-Perception Axiom</p>
+        <div class="meta">4 ชั้น · C#/.NET</div>
+      </div>      <div class="card">
+        <div class="card-icon">📐</div>
+        <h3>สถาปัตยกรรมวิวัฒนาการ</h3>
+        <span class="tag">แผนภาพครบชุด</span>
+        <p>เอกสารสถาปัตยกรรม 4 ยุค สู่ The Weaver พร้อมสูตร 62 สูตร (12 สัจพจน์)</p>
+        <div class="meta">Mermaid · PlantUML · SVG</div>
+      </div>      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>แดชบอร์ดควอนตัม Ω</h3>
+        <span class="tag">UI/UX Dashboard</span>
+        <p>Dashboard สไตล์ควอนตัมโฮโลแกรม พร้อม particle canvas และธีม deep-space</p>
+        <div class="meta">HTML/CSS/JS</div>
+      </div>      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>แดชบอร์ดระบบมาสเตอร์</h3>
+        <span class="tag">React Dashboard</span>
+        <p>แดชบอร์ดรวม AI Models, Skill System, Strategic Analysis และ Master Formulas</p>
+        <div class="meta">React · TypeScript</div>
+      </div>      <div class="card">
+        <div class="card-icon">💊</div>
+        <h3>Genesis Rx</h3>
+        <span class="tag">AI Drug Discovery</span>
+        <p>แนวคิดแพลตฟอร์มคัดกรองโมเลกุลยาในคอมพิวเตอร์ด้วย ML และ molecular descriptors</p>
+        <div class="meta">MVP v0.1</div>
+      </div>
+  </div>
+
+  <h2>สถาปัตยกรรม 4 ชั้น</h2>
+      <div class="layer">
+        <span class="layer-num">L1</span>
+        <div><h4>S-I-N-N-I-N-G ORCHESTRATOR</h4><p>The Body / ร่างกาย</p></div>
+      </div>      <div class="layer">
+        <span class="layer-num">L2</span>
+        <div><h4>PROMETHEUS ENGINE</h4><p>The Mind / สมอง</p></div>
+      </div>      <div class="layer">
+        <span class="layer-num">L3</span>
+        <div><h4>EVOLUTION ENGINE</h4><p>The Spirit / จิตวิญญาณ</p></div>
+      </div>      <div class="layer">
+        <span class="layer-num">L4</span>
+        <div><h4>SOVEREIGN DOCTRINE</h4><p>The Will / เจตจำนง</p></div>
+      </div>
+
+  <h2>คลังสูตรคณิตศาสตร์</h2>
+  <div class="chips">
+<span class='chip'>Cognitive & Algorithmic Dynamics</span><span class='chip'>Astro-Physical & Quantum Engineering</span><span class='chip'>Socio-Economic & Digital Ontology</span><span class='chip'>Bio-Digital & Genetic Synthesis</span><span class='chip'>Pure Mathematics</span>
+  </div>
+
+  <h2>เส้นทางวิวัฒนาการ</h2>
+      <div class="tl-item"><span class="tl-label">ยุคที่ 1</span><strong>The Collective</strong> <span class="tl-thai">แบบรวมหมู่</span></div>      <div class="tl-item"><span class="tl-label">ยุคที่ 2</span><strong>The Singularity</strong> <span class="tl-thai">แบบเอกภาวะ</span></div>      <div class="tl-item"><span class="tl-label">ยุคที่ 3</span><strong>The Pantheon</strong> <span class="tl-thai">แบบคณะปัญญา</span></div>      <div class="tl-item"><span class="tl-label">ยุคที่ 4</span><strong>The Weaver</strong> <span class="tl-thai">ผู้ถักทอ</span></div>
+
+  <h2>แผนภาพสถาปัตยกรรม</h2>
+      <div class="fig">
+        <object data="../../แผนภาพ/01_ภาพรวมวิวัฒนาการ.svg" type="image/svg+xml" style="width:100%;height:340px;"></object>
+        <div class="fig-cap">ภาพรวมวิวัฒนาการ 4 ยุค</div>
+      </div>      <div class="fig">
+        <object data="../../แผนภาพ/02_โครงสร้างสี่ชั้น.svg" type="image/svg+xml" style="width:100%;height:340px;"></object>
+        <div class="fig-cap">โครงสร้าง 4 ชั้นของพิธีสาร</div>
+      </div>      <div class="fig">
+        <object data="../../แผนภาพ/03_วงจรการเรียนรู้.svg" type="image/svg+xml" style="width:100%;height:340px;"></object>
+        <div class="fig-cap">S-i-n-n-i-n-g-01 วงจรการเรียนรู้</div>
+      </div>      <div class="fig">
+        <object data="../../แผนภาพ/04_คลังองค์ความรู้.svg" type="image/svg+xml" style="width:100%;height:340px;"></object>
+        <div class="fig-cap">คลังองค์ความรู้ Knowledge Codex</div>
+      </div>      <div class="fig">
+        <object data="../../แผนภาพ/05_การไหลของข้อมูล.svg" type="image/svg+xml" style="width:100%;height:340px;"></object>
+        <div class="fig-cap">การไหลของข้อมูล & Ecosystem</div>
+      </div>
+
+  <h2>ไฟล์ต้นทาง</h2>
+  <div class="src-links">
+<a class='src-link' href='../../โค้ด/พิธีสารดีเจซินนิ่ง.cs' target='_blank'>พิธีสารดีเจซินนิ่ง.cs</a>
+<a class='src-link' href='../../โค้ด/แดชบอร์ดระบบมาสเตอร์.tsx' target='_blank'>แดชบอร์ดระบบมาสเตอร์.tsx</a>
+<a class='src-link' href='../../สถาปัตยกรรม/แผนภาพสถาปัตยกรรม.md' target='_blank'>แผนภาพสถาปัตยกรรม.md</a>
+<a class='src-link' href='../../สถาปัตยกรรม/แผนภาพสถาปัตยกรรมฉบับสมบูรณ์.md' target='_blank'>แผนภาพสถาปัตยกรรมฉบับสมบูรณ์.md</a>
+<a class='src-link' href='../../สถาปัตยกรรม/แผนภาพสถาปัตยกรรม.puml' target='_blank'>แผนภาพสถาปัตยกรรม.puml</a>
+<a class='src-link' href='../../สิทธิบัตร/สิทธิบัตร_ระบบปัญญาประดิษฐ์ขั้นสูง.html' target='_blank'>สิทธิบัตร_ระบบปัญญาประดิษฐ์ขั้นสูง.html</a>
+  </div>
+</div>
+<footer>DjSinning Protocol v8.0.0 — พอร์ตโฟลิโอสร้างอัตโนมัติโดยระบบ AI Auto | © 2026</footer>
+</body>
+</html>

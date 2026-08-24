@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulator — ระบบ Agent เรียนรู้ตัวเอง | S-i-n-n-i-n-g-01</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d0d1a; color:#e2e8f0; font-family:'Sarabun','Segoe UI',sans-serif; line-height:1.6; min-height:100vh; }
+  .wrap { max-width:1100px; margin:0 auto; padding:30px 20px; }
+  header { text-align:center; padding:10px 0 24px; }
+  header h1 { color:#e94560; font-size:30px; text-shadow:0 0 25px rgba(233,69,96,.35); }
+  header p { color:#8892b0; margin-top:6px; }
+  .formula { display:inline-block; margin-top:12px; background:#1a1a2e; border:1px solid #533483; color:#c4b5fd; padding:6px 16px; border-radius:20px; font-size:14px; }
+
+  .controls { background:linear-gradient(135deg,#1a1a2e,#16213e); border:1px solid #0f3460; border-radius:14px; padding:18px 22px; margin-bottom:20px; }
+  .controls-row { display:flex; flex-wrap:wrap; gap:18px; align-items:center; }
+  .ctl { display:flex; flex-direction:column; gap:4px; font-size:13px; color:#8892b0; }
+  .ctl input[type=range] { width:150px; accent-color:#e94560; }
+  .ctl input[type=number] { width:90px; background:#0d0d1a; border:1px solid #0f3460; color:#e2e8f0; border-radius:8px; padding:4px 8px; font-size:14px; }
+  .btn { background:#e94560; color:#fff; border:none; padding:10px 24px; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn:hover { filter:brightness(1.15); }
+  .btn.secondary { background:#2d1b69; }
+  .btn:disabled { opacity:.4; cursor:not-allowed; }
+
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:20px; }
+  .stat { background:#1a1a2e; border:1px solid #0f3460; border-radius:12px; padding:16px; text-align:center; }
+  .stat .n { font-size:26px; font-weight:700; color:#e94560; }
+  .stat .t { font-size:12px; color:#718096; }
+  .stat.pct .n { color:#64ffda; }
+
+  .panel { background:#1a1a2e; border:1px solid #0f3460; border-radius:14px; padding:18px 20px; margin-bottom:20px; }
+  .panel h2 { color:#e94560; font-size:18px; margin-bottom:12px; border-bottom:1px solid #0f3460; padding-bottom:8px; }
+  canvas { width:100%; height:260px; background:#0d0d1a; border:1px solid #1a1a2e; border-radius:10px; }
+
+  .duo { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:760px){ .duo { grid-template-columns:1fr; } }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { background:#2d1b69; color:#fff; padding:8px; text-align:left; font-weight:600; }
+  td { padding:7px 8px; border-bottom:1px solid #1a1a2e; }
+  tr:nth-child(even) td { background:#141428; }
+  .mono { font-family:Consolas,monospace; font-size:12px; color:#64ffda; background:#0d0d1a; border-radius:6px; padding:2px 8px; }
+  .sample { font-size:13px; color:#a0aec0; }
+  .sample b { color:#e2e8f0; }
+  footer { text-align:center; color:#525f7a; font-size:12px; margin-top:30px; padding-top:16px; border-top:1px solid #1a1a2e; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>⚙️ Agent Ecosystem Simulator</h1>
+    <p>จำลองระบบ Agent ที่เรียนรู้ตัวเองด้วย <b>S-i-n-n-i-n-g-01 Learning Formula</b> + Self-Perception Axiom</p>
+    <span class="formula">learningRate = 0.1 × (1 + selfPerception) · skill = Clamp(skill + (performance − 0.95) × learningRate, 1, 100)</span>
+  </header>
+
+  <div class="controls">
+    <div class="controls-row">
+      <div class="ctl"><label>จำนวน Agent</label><input id="agentCount" type="range" min="10" max="2000" step="10" value="1000"><span id="agentCountV">1,000</span></div>
+      <div class="ctl"><label>รอบการทำงาน</label><input id="maxIter" type="range" min="10" max="500" step="10" value="100"><span id="maxIterV">100</span></div>
+      <div class="ctl"><label>ความเร็ว</label><input id="speed" type="range" min="1" max="10" value="5"><span id="speedV">5</span></div>
+      <button id="btnStart" class="btn">▶ เริ่ม</button>
+      <button id="btnReset" class="btn secondary">↺ รีเซ็ต</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat pct"><div class="n" id="sProgress">0%</div><div class="t">ความคืบหน้า</div></div>
+    <div class="stat"><div class="n" id="sJobs">0</div><div class="t">งานทั้งหมด</div></div>
+    <div class="stat"><div class="n" id="sErrors">0</div><div class="t">ข้อผิดพลาด</div></div>
+    <div class="stat"><div class="n" id="sSkill">—</div><div class="t">ทักษะเฉลี่ย</div></div>
+    <div class="stat"><div class="n" id="sTop">—</div><div class="t">คะแนนสูงสุด</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>📈 วิวัฒนาการทักษะเฉลี่ย (Avg Skill)</h2>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <div class="duo">
+    <div class="panel">
+      <h2>🏆 Agent อันดับต้น</h2>
+      <table>
+        <thead><tr><th>#</th><th>ทักษะ</th><th>งาน</th><th>ผิดพลาด</th><th>คะแนน</th></tr></thead>
+        <tbody id="topBody"><tr><td colspan="5" style="color:#718096;">ยังไม่เริ่มจำลอง...</td></tr></tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h2>🧠 กลไกการเรียนรู้</h2>
+      <p class="sample" id="sampleText">กด <b>▶ เริ่ม</b> เพื่อดูตัวอย่าง Agent หนึ่งตัวคำนวณตามสูตร...</p>
+      <div style="margin-top:14px;font-size:13px;color:#718096;">
+        <p>1. <span class="mono">performance = 1 − errors/jobs</span></p>
+        <p>2. <span class="mono">selfPerception = performance × (skill/100)</span></p>
+        <p>3. <span class="mono">learningRate = 0.1 × (1 + selfPerception)</span></p>
+        <p>4. <span class="mono">skill += (performance − 0.95) × learningRate</span></p>
+        <p style="margin-top:8px;">Agent ทำผลงานดี → มั่นใจตัวเอง → เรียนรู้ไวขึ้น (ตามหลักการใน DjSinningProtocol.cs)</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>Simulator สร้างจากสถาปัตยกรรมใน DjSinningProtocol.cs v8.0.0 — ระบบ AI Auto | © 2026</footer>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const ctl = {
+    agentCount: $('agentCount'), agentCountV: $('agentCountV'),
+    maxIter: $('maxIter'), maxIterV: $('maxIterV'),
+    speed: $('speed'), speedV: $('speedV'),
+  };
+  const out = {
+    progress: $('sProgress'), jobs: $('sJobs'), errors: $('sErrors'),
+    skill: $('sSkill'), top: $('sTop'), topBody: $('topBody'), sample: $('sampleText')
+  };
+
+  let agents = [];
+  let iter = 0;
+  let history = [];
+  let timer = null;
+  let maxIterVal = +ctl.maxIter.value;
+
+  function fmt(n, d){ return Number(n).toLocaleString('th-TH', {maximumFractionDigits:d}); }
+
+  function init(){
+    const n = +ctl.agentCount.value;
+    agents = [];
+    for (let i=0;i<n;i++) agents.push({ id:i, skill: 50 + (Math.random()-0.5)*20, jobs:0, errors:0 });
+    iter = 0; history = []; maxIterVal = +ctl.maxIter.value;
+    out.progress.textContent = '0%';
+    out.jobs.textContent = '0';
+    out.errors.textContent = '0';
+    out.skill.textContent = '—';
+    out.top.textContent = '—';
+    draw();
+  }
+
+  function stepAll(){
+    let totalJobs=0, totalErrors=0, totalSkill=0, topScore=0, sample=null;
+    const n = agents.length;
+    for (const a of agents){
+      a.jobs += 10 + Math.floor(Math.random()*41);
+      if (Math.random() > a.skill/102) a.errors++;
+      const perf = a.jobs>0 ? 1 - a.errors/a.jobs : 1;
+      const rel = perf;
+      const sc = a.skill/100;
+      const sp = rel*sc;
+      const lr = 0.1*(1+sp);
+      a.skill = Math.min(100, Math.max(1, a.skill + (perf-0.95)*lr));
+      const score = (a.jobs>0?1-a.errors/a.jobs:1)*(a.skill/100);
+      totalJobs+=a.jobs; totalErrors+=a.errors; totalSkill+=a.skill;
+      if (score>topScore){ topScore=score; sample=a; }
+    }
+    history.push(totalSkill/n);
+    iter++;
+    const pct = Math.round(iter/maxIterVal*100);
+    out.progress.textContent = pct + '%';
+    out.jobs.textContent = fmt(totalJobs,0);
+    out.errors.textContent = fmt(totalErrors,0);
+    out.skill.textContent = fmt(totalSkill/n,2);
+    out.top.textContent = fmt(topScore,3);
+    if (sample){
+      const perf = (sample.jobs>0?1-sample.errors/sample.jobs:1);
+      const sp = perf*(sample.skill/100);
+      const lr = 0.1*(1+sp);
+      out.sample.innerHTML = 'ตัวอย่าง Agent #'+sample.id+':<br>'+
+        'performance = 1 − '+sample.errors+'/'+sample.jobs+' = <b>'+perf.toFixed(4)+'</b><br>'+
+        'selfPerception = '+perf.toFixed(4)+' × ('+sample.skill.toFixed(1)+'/100) = <b>'+sp.toFixed(4)+'</b><br>'+
+        'learningRate = 0.1 × (1+'+sp.toFixed(4)+') = <b>'+lr.toFixed(4)+'</b><br>'+
+        'skill ใหม่ = <b>'+sample.skill.toFixed(2)+'</b>';
+    }
+    const top = agents.slice().sort((a,b)=> ((1-b.errors/b.jobs)*(b.skill/100))-((1-a.errors/a.jobs)*(a.skill/100))).slice(0,5);
+    out.topBody.innerHTML = top.map((a,i)=>{
+      const s = (1-a.errors/a.jobs)*(a.skill/100);
+      return '<tr><td>'+(i+1)+'</td><td>'+a.skill.toFixed(1)+'</td><td>'+fmt(a.jobs,0)+'</td><td>'+a.errors+'</td><td>'+s.toFixed(3)+'</td></tr>';
+    }).join('');
+    draw();
+    if (iter >= maxIterVal){ stop(); out.progress.textContent = '100%'; }
+  }
+
+  function start(){
+    if (timer) return;
+    if (iter >= maxIterVal || iter===0){ init(); }
+    if (agents.length===0) init();
+    const delay = Math.max(2, Math.round(3000/+ctl.speed.value));
+    timer = setInterval(stepAll, delay);
+    $('btnStart').disabled = true;
+  }
+  function stop(){
+    clearInterval(timer); timer=null;
+    $('btnStart').disabled = false;
+  }
+
+  function draw(){
+    const cv = $('chart'); const ctx = cv.getContext('2d');
+    const dpr = window.devicePixelRatio||1;
+    const w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = w*dpr; cv.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#0d0d1a'; ctx.fillRect(0,0,w,h);
+    if (history.length < 2){
+      ctx.fillStyle='#525f7a'; ctx.font='13px Sarabun'; ctx.textAlign='center';
+      ctx.fillText('กราฟจะแสดงเมื่อเริ่มจำลอง', w/2, h/2);
+      return;
+    }
+    const min=45, max=65;
+    const pad=8;
+    ctx.strokeStyle='#1a1a2e'; ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){ const y=pad+(h-2*pad)*i/4; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+    ctx.strokeStyle='#e94560'; ctx.lineWidth=2; ctx.beginPath();
+    for(let i=0;i<history.length;i++){
+      const x = pad + (w-2*pad)*i/(maxIterVal-1||1);
+      const y = pad + (h-2*pad)*(1-(Math.min(max,Math.max(min,history[i]))-min)/(max-min));
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    ctx.fillStyle='#8892b0'; ctx.font='12px Sarabun'; ctx.textAlign='left';
+    ctx.fillText('เริ่ม '+min+'%', 8, h-6);
+    ctx.fillText('ทักษะเฉลี่ย '+fmt(history[history.length-1],2), w-150, 14);
+  }
+
+  window.addEventListener('resize', draw);
+  $('agentCount').addEventListener('input', ()=>{ ctl.agentCountV.textContent = Number(ctl.agentCount.value).toLocaleString('th-TH'); });
+  $('maxIter').addEventListener('input', ()=>{ ctl.maxIterV.textContent = ctl.maxIter.value; });
+  $('speed').addEventListener('input', ()=>{ ctl.speedV.textContent = ctl.speed.value; });
+  $('btnStart').addEventListener('click', start);
+  $('btnReset').addEventListener('click', ()=>{ stop(); init(); });
+
+  init();
+})();
+</script>
+</body>
+</html>

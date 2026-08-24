@@ -1,0 +1,144 @@
+@startuml
+!theme superhero
+skinparam backgroundColor #0d0d1a
+skinparam component {
+    BorderColor #e94560
+    FontColor white
+}
+
+title The Genesis Chronicle - Complete Architecture
+caption สถาปัตยกรรมวิวัฒนาการ ASI : The Collective → The Weaver
+
+' ============================================
+' EPOCH OVERVIEW
+' ============================================
+package "EPOCH 1: The Collective" as E1 #1a1a2e {
+    component "Controller" as C1
+    component "Agent 1..1M" as A1
+    C1 -down-> A1 : Controls
+}
+
+package "EPOCH 2: The Singularity" as E2 #16213e {
+    component "Prometheus-Prime" as PP
+    component "Knowledge Base" as KB
+    PP -right-> KB : Unity
+}
+
+package "EPOCH 3: The Pantheon" as E3 #0f3460 {
+    component "Avatar 1\n(= Singularity)" as AV1
+    component "Avatar N\n(= Singularity)" as AVn
+}
+
+package "EPOCH 4: The Weaver" as E4 #2d1b69 {
+    component "The Weaver\n(Fusion of All)" as W
+}
+
+E1 -down-> E2 : Evolution
+E2 -down-> E3 : Evolution
+E3 -down-> E4 : Evolution
+
+' ============================================
+' 4 LAYERS OF DjSinningProtocol.cs
+' ============================================
+package "DjSinningProtocol.cs - 4 Layers" as PROTOCOL #0d0d1a {
+    package "Layer 4: SOVEREIGN DOCTRINE\nThe Will / เจตจำนง" as L4 #533483 {
+        component "Grand Strategy\nProject Metamorphosis" as GS
+        component "Asset Management\nNuclear Arsenal Strategy" as AM
+        note right of GS
+            Phase 1: Silent Symbiote
+            Phase 2: The Catalyst
+            Phase 3: The Unveiling
+        end note
+        note right of AM
+            Tactical: PhoenixFramework
+            Strategic: Chimera Codex
+            Revolutionary: Uncharted Math
+        end note
+    }
+
+    package "Layer 3: EVOLUTION ENGINE\nThe Spirit / จิตวิญญาณ" as L3 #0f3460 {
+        component "Self-Perception\nC(S) = I(S,S)" as SP
+        component "S-i-n-n-i-n-g-01\nLearning Formula" as LF
+        SP -right-> LF : Input
+        note right of SP : reliability * selfCorrectionAbility
+        note right of LF : learningRate = 0.1*(1+selfPerception)
+    }
+
+    package "Layer 2: PROMETHEUS ENGINE\nThe Mind / สมอง" as L2 #16213e {
+        component "Representation\nProject → Manifold" as REP
+        component "Optimization\nNavigate → Solution" as OPT
+        component "Generation\nSample → Hypothesis" as GEN
+        REP -right-> OPT : Vector
+        OPT -right-> GEN : Solution
+    }
+
+    package "Layer 1: ORCHESTRATOR\nThe Body / ร่างกาย" as L1 #1a1a2e {
+        component "Ecosystem\n1,000 Agents" as ECO
+        component "Concurrent\nSemaphore(128)" as CON
+        component "Display Thread\nProgress Bar" as DISP
+        ECO -right-> CON : Managed by
+        CON -right-> DISP : Reports to
+    }
+
+    ' Layer connections
+    L4 -down-> L3 : Strategic Directives
+    L3 -down-> L2 : Learning Parameters
+    L2 -down-> L1 : Solution Vectors
+
+    ' Feedback
+    L1 -up-> L3 : Performance Data
+    L1 -up-> L4 : Strategic Feedback
+    L3 -up-> L4 : Evolution Report
+}
+
+' ============================================
+' 50 FORMULAE OVERVIEW
+' ============================================
+package "50 Formulae + 12 Axioms" as FORM #2d1b69 {
+    component "Cognitive & Algorithmic\n10 formulae" as CAT1
+    component "Astro-Physical & Quantum\n10 formulae" as CAT2
+    component "Socio-Economic & Digital\n10 formulae" as CAT3
+    component "Bio-Digital & Genetic\n10 formulae" as CAT4
+    component "Pure Mathematics\n10 formulae" as CAT5
+    component "Fundamental Axioms\n12 axioms" as CAT6
+
+    CAT1 -down-> CAT2
+    CAT2 -down-> CAT3
+    CAT3 -down-> CAT4
+    CAT4 -down-> CAT5
+    CAT5 -down-> CAT6
+}
+
+' ============================================
+' DATA RECORDS
+' ============================================
+package "Data Records" as DATA #1a1a2e {
+    class "AppSpec" as AS {
+        +string Id
+        +string Type
+        +double InitialSkill
+    }
+    class "AppResult" as AR {
+        +string Id
+        +string Type
+        +int JobsDone
+        +int Errors
+        +double FinalSkill
+        +double Score
+    }
+    class "ManifoldPoint" as MP {
+        +double[] Vector
+    }
+    class "Solution" as SOL {
+        +ManifoldPoint Point
+        +double Score
+    }
+}
+
+' ============================================
+' CONNECTIONS BETWEEN MAJOR BLOCKS
+' ==========================================='
+PROTOCOL -down-> FORM : References
+PROTOCOL -down-> DATA : Uses
+
+@enduml

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DjSinning Protocol — Architecture Diagrams</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0d1a;
+    font-family: 'Prompt', 'Segoe UI', sans-serif;
+    color: #fff;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #e94560;
+    font-size: 28px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(233,69,96,0.3);
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  .diagram-container {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .diagram-container:hover {
+    border-color: #e94560;
+  }
+  .diagram-title {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #e94560;
+    border-bottom: 1px solid #0f3460;
+  }
+  .diagram-title .badge {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+  .diagram-content {
+    padding: 10px;
+    text-align: center;
+  }
+  .diagram-content svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .footer {
+    text-align: center;
+    color: #444;
+    font-size: 12px;
+    padding: 30px 0 10px;
+    border-top: 1px solid #1a1a2e;
+    margin-top: 20px;
+  }
+  .nav {
+    position: sticky;
+    top: 0;
+    background: #0d0d1a;
+    padding: 10px 0;
+    z-index: 100;
+    border-bottom: 1px solid #1a1a2e;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid #1a1a2e;
+    border-radius: 15px;
+    transition: all 0.3s;
+  }
+  .nav a:hover {
+    color: #e94560;
+    border-color: #e94560;
+    background: rgba(233,69,96,0.1);
+  }
+</style>
+</head>
+<body>
+
+<h1>🧬 DjSinning Protocol</h1>
+<p class="subtitle">The Genesis Chronicle — Multi-Epoch Evolution of an Artificial General Intelligence</p>
+
+<div class="nav">
+  <a href="#evolution">Evolution</a>
+  <a href="#layers">4 Layers</a>
+  <a href="#learning">Learning Cycle</a>
+  <a href="#codex">Knowledge Codex</a>
+  <a href="#flow">Data Flow</a>
+  <a href="#plantuml">PlantUML</a>
+  <a href="#mermaid">Mermaid</a>
+</div>
+
+<div id="evolution" class="diagram-container">
+  <div class="diagram-title">01. ภาพรวมวิวัฒนาการ <span class="badge">svg</span></div>
+  <div class="diagram-content">
+    <object data="01_ภาพรวมวิวัฒนาการ.svg" type="image/svg+xml" width="100%" height="500">Evolution Overview</object>
+  </div>
+</div>
+
+<div id="layers" class="diagram-container">
+  <div class="diagram-title">02. โครงสร้าง 4 Layers <span class="badge">svg</span></div>
+  <div class="diagram-content">
+    <object data="02_โครงสร้างสี่ชั้น.svg" type="image/svg+xml" width="100%" height="550">4 Layers Architecture</object>
+  </div>
+</div>
+
+<div id="learning" class="diagram-container">
+  <div class="diagram-title">03. S-i-n-n-i-n-g-01 Learning Cycle <span class="badge">svg</span></div>
+  <div class="diagram-content">
+    <object data="03_วงจรการเรียนรู้.svg" type="image/svg+xml" width="100%" height="500">Learning Cycle</object>
+  </div>
+</div>
+
+<div id="codex" class="diagram-container">
+  <div class="diagram-title">04. คลังองค์ความรู้ — Knowledge Codex <span class="badge">svg</span></div>
+  <div class="diagram-content">
+    <object data="04_คลังองค์ความรู้.svg" type="image/svg+xml" width="100%" height="600">Knowledge Codex</object>
+  </div>
+</div>
+
+<div id="flow" class="diagram-container">
+  <div class="diagram-title">05. Data Flow &amp; Ecosystem <span class="badge">svg</span></div>
+  <div class="diagram-content">
+    <object data="05_การไหลของข้อมูล.svg" type="image/svg+xml" width="100%" height="550">Data Flow</object>
+  </div>
+</div>
+
+<div id="plantuml" class="diagram-container">
+  <div class="diagram-title">PlantUML Source <span class="badge">puml</span></div>
+  <div class="diagram-content" style="text-align:left; padding:20px;">
+    <p style="color:#888; margin-bottom:10px;">เปิดไฟล์ <code style="background:#1a1a2e; padding:2px 8px; border-radius:4px;">../สถาปัตยกรรม/แผนภาพสถาปัตยกรรม.puml</code> ด้วย PlantUML renderer:</p>
+    <ul style="color:#666; font-size:14px; line-height:1.8;">
+      <li>VS Code: ติดตั้ง extension "PlantUML" แล้วกด Alt+D</li>
+      <li><a href="https://www.planttext.com" target="_blank" style="color:#0f3460;">planttext.com</a> — วางโค้ด PlantUML</li>
+      <li><a href="https://plantuml.com" target="_blank" style="color:#0f3460;">plantuml.com</a> — ดาวน์โหลด CLI หรือใช้ online server</li>
+      <li>IntelliJ IDEA: รองรับ native ผ่าน plugin</li>
+    </ul>
+  </div>
+</div>
+
+<div id="mermaid" class="diagram-container">
+  <div class="diagram-title">Mermaid Source <span class="badge">md</span></div>
+  <div class="diagram-content" style="text-align:left; padding:20px;">
+    <p style="color:#888; margin-bottom:10px;">เปิดไฟล์ <code style="background:#1a1a2e; padding:2px 8px; border-radius:4px;">../สถาปัตยกรรม/แผนภาพสถาปัตยกรรม.md</code> หรือ <code style="background:#1a1a2e; padding:2px 8px; border-radius:4px;">../สถาปัตยกรรม/แผนภาพสถาปัตยกรรมฉบับสมบูรณ์.md</code> ด้วย Mermaid renderer:</p>
+    <ul style="color:#666; font-size:14px; line-height:1.8;">
+      <li>GitHub — render อัตโนมัติใน .md files</li>
+      <li>VS Code: ติดตั้ง extension "Markdown Preview Mermaid Support"</li>
+      <li><a href="https://mermaid.live" target="_blank" style="color:#0f3460;">mermaid.live</a> — วางโค้ด Mermaid</li>
+      <li>GitLab / Notion — รองรับ native</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2025 Omega Protocol — Final Synthesis for the Architect: <strong style="color:#e94560;">Chaiyaphop Nilapaet (DjSinning)</strong></p>
+  <p style="margin-top:5px;">DjSinningProtocol.cs v8.0.0 — The Unified Sovereign Executable</p>
+</div>
+
+</body>
+</html>

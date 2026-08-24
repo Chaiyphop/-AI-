@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ Sinning Protocol — คอร์สสร้างระบบ AI หลายชั้นที่เรียนรู้ตัวเองได้</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#07111f; --panel:#0d1b2e; --line:rgba(148,163,184,.18);
+    --cyan:#56d9ff; --ember:#ff7043; --muted:#9fb1c8;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; width:100%; font-family:'Sarabun',sans-serif; color:#eef6ff; overflow-x:hidden; background:var(--ink); }
+  .app-shell { width:100%; min-height:100vh; position:relative; isolation:isolate; background-color:var(--ink); }
+  .app-shell::before { content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background-image:linear-gradient(rgba(119,151,185,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(119,151,185,.055) 1px, transparent 1px);
+    background-size:42px 42px; mask-image:linear-gradient(to bottom, black 0%, rgba(0,0,0,.55) 48%, transparent 94%); }
+  .app-shell::after { content:""; position:absolute; top:-320px; right:-180px; width:720px; height:720px; border-radius:50%; z-index:-1; pointer-events:none;
+    background:radial-gradient(circle, rgba(20,122,175,.25), transparent 66%); }
+  .nav-glass { background:rgba(7,17,31,.75); border-bottom:1px solid var(--line); backdrop-filter:blur(18px); }
+  .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:10px;
+    background:linear-gradient(135deg,#ff7a50,#e44c2a); color:#fff6ef; box-shadow:0 0 26px rgba(255,112,67,.3); }
+  .eyebrow { font-family:'Space Mono',monospace; letter-spacing:.1em; text-transform:uppercase; }
+  .hero-copy { font-size:clamp(1rem,1.9vw,1.25rem); line-height:1.75; color:var(--muted); }
+  .button-primary,.button-secondary { min-height:48px; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; cursor:pointer; }
+  .button-primary { background:linear-gradient(135deg,#ff7a50,#e44c2a); color:#fff6ef; }
+  .button-primary:hover { transform:translateY(-2px); box-shadow:0 14px 30px rgba(255,112,67,.22); }
+  .button-secondary { background:transparent; color:#dcefff; border:1px solid rgba(86,217,255,.45); }
+  .button-secondary:hover { transform:translateY(-2px); background:rgba(86,217,255,.1); }
+  .focus-ring:focus-visible { outline:3px solid #56d9ff; outline-offset:3px; }
+  .agent-console { position:relative; min-height:440px; border:1px solid rgba(134,205,234,.25); border-radius:20px; overflow:hidden;
+    background:linear-gradient(145deg, rgba(18,48,76,.9), rgba(8,20,37,.96));
+    box-shadow:0 26px 80px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07); }
+  .agent-console::before { content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(circle at 75% 24%, rgba(86,217,255,.20), transparent 27%); }
+  .console-grid { position:absolute; inset:0; opacity:.3;
+    background-image:linear-gradient(rgba(86,217,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(86,217,255,.12) 1px, transparent 1px);
+    background-size:32px 32px; }
+  .node { position:absolute; z-index:2; padding:.7rem .85rem; border:1px solid rgba(167,218,237,.24); border-radius:12px;
+    background:rgba(11,28,48,.86); color:#dcefff; font:700 .68rem 'Space Mono',monospace; box-shadow:0 10px 25px rgba(0,0,0,.18);
+    animation:float 4s ease-in-out infinite; white-space:nowrap; }
+  .node i { color:var(--cyan); vertical-align:middle; margin-right:.35rem; width:13px; height:13px; }
+  .node-one { top:16%; left:7%; animation-delay:.2s; }
+  .node-two { top:60%; left:9%; animation-delay:.7s; }
+  .node-three { top:14%; right:6%; animation-delay:1s; }
+  .node-four { bottom:16%; right:5%; animation-delay:1.3s; }
+  .core-orb { position:absolute; z-index:3; left:50%; top:46%; width:112px; height:112px; display:grid; place-items:center; border-radius:50%;
+    transform:translate(-50%,-50%); background:radial-gradient(circle at 35% 30%, #a3eeff, #2592bd 41%, #0a3654 69%);
+    border:1px solid rgba(186,241,255,.8); box-shadow:0 0 0 15px rgba(86,217,255,.05), 0 0 58px rgba(86,217,255,.45);
+    animation:pulse 3.3s ease-in-out infinite; }
+  .core-orb i { width:38px; height:38px; color:#06223a; stroke-width:2.3; }
+  .signal { position:absolute; z-index:1; height:1px; transform-origin:left center;
+    background:linear-gradient(90deg, rgba(86,217,255,.05), rgba(86,217,255,.85), rgba(255,112,67,.2));
+    animation:flicker 2.7s ease-in-out infinite; }
+  .s1 { width:37%; top:30%; left:22%; transform:rotate(25deg); }
+  .s2 { width:33%; top:62%; left:21%; transform:rotate(-19deg); animation-delay:.5s; }
+  .s3 { width:32%; top:32%; left:53%; transform:rotate(-23deg); animation-delay:1s; }
+  .s4 { width:33%; top:61%; left:52%; transform:rotate(22deg); animation-delay:1.4s; }
+  .terminal-row { border-top:1px solid rgba(148,163,184,.14); font:.68rem 'Space Mono',monospace; color:#80a0bb; }
+  .feature-card { position:relative; overflow:hidden; border:1px solid rgba(148,163,184,.17); background:var(--panel);
+    transition:transform .25s ease, border-color .25s ease; }
+  .feature-card:hover { transform:translateY(-6px); border-color:rgba(86,217,255,.5); }
+  .card-visual { height:11rem; display:grid; place-items:center; }
+  .v1 { background:linear-gradient(135deg,#12233f,#0a3654 55%,#123a5c); }
+  .v2 { background:linear-gradient(135deg,#3a1622,#571f2e 55%,#2b1220); }
+  .v3 { background:linear-gradient(135deg,#10283e,#0d3a44 55%,#072033); }
+  .card-visual i { width:56px; height:56px; stroke-width:1.4; opacity:.85; }
+  .v1 i { color:#56d9ff; } .v2 i { color:#ff7043; } .v3 i { color:#7ee0b8; }
+  .metric-rule { border-left:1px solid rgba(148,163,184,.24); }
+  .metric-value { font-size:clamp(1.9rem,4vw,2.6rem); color:#fff; }
+  .reveal-panel { max-height:0; opacity:0; overflow:hidden; transition:max-height .45s ease, opacity .35s ease, margin .35s ease; }
+  .reveal-panel.is-open { max-height:520px; opacity:1; margin-top:1.25rem; }
+  .canva-panel { background:var(--panel); border-color:var(--line); }
+  .canva-banner { background:linear-gradient(120deg,#132c47 0%,#0d1b2e 60%); border-color:rgba(86,217,255,.35); }
+  .price-pill { display:inline-block; background:rgba(86,217,255,.12); border:1px solid rgba(86,217,255,.4);
+    color:#bfeaff; padding:.45rem 1rem; border-radius:999px; font-size:.95rem; margin:.35rem .3rem 0 0; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+  @keyframes pulse {
+    0%,100%{box-shadow:0 0 0 15px rgba(86,217,255,.05), 0 0 50px rgba(86,217,255,.35)}
+    50%{box-shadow:0 0 0 23px rgba(86,217,255,.035), 0 0 72px rgba(86,217,255,.55)} }
+  @keyframes flicker { 0%,100%{opacity:.3} 50%{opacity:.95} }
+  @media (max-width:768px) {
+    .agent-console { min-height:370px; }
+    .node { font-size:.58rem; padding:.55rem .6rem; }
+    .metric-rule { border-left:0; border-top:1px solid rgba(148,163,184,.24); }
+  }
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="nav-glass sticky top-0 z-40 w-full">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Main navigation">
+      <a href="#top" class="focus-ring flex items-center gap-3 rounded-md">
+        <span class="brand-mark" aria-hidden="true"><i data-lucide="bot"></i></span>
+        <span class="text-lg font-bold tracking-tight">DJ SINNING PROTOCOL</span>
+      </a>
+      <div class="hidden items-center gap-7 md:flex">
+        <a class="focus-ring rounded-md text-sm font-medium text-slate-300 transition hover:text-cyan-200" href="#capabilities">จุดเด่น</a>
+        <a class="focus-ring rounded-md text-sm font-medium text-slate-300 transition hover:text-cyan-200" href="#results">ตัวเลข</a>
+      </div>
+      <a class="focus-ring button-primary rounded-lg px-4 py-2 text-sm font-bold" href="#launch">สมัครรอบใหม่</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="relative overflow-hidden">
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div class="max-w-2xl">
+          <div class="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-bold" style="border-color:rgba(255,112,67,.5);color:#ffc9b5;">
+            <span class="h-2 w-2 rounded-full bg-orange-400 shadow-[0_0_12px_#ff7043]"></span>
+            <span>รอบใหม่เปิดแล้ว — ที่นั่งจำกัด</span>
+          </div>
+          <h1 class="max-w-xl text-4xl font-bold tracking-tight md:text-5xl" style="letter-spacing:-.045em;">
+            สร้างระบบ AI แบบหลายชั้น<br>ที่<span style="color:var(--cyan);">เรียนรู้ตัวเองได้</span>
+          </h1>
+          <p class="hero-copy mt-6 max-w-xl">
+            คอร์ส 8 สัปดาห์ สำหรับ Developer ที่อยากขึ้นเป็น AI Systems Architect —
+            จากแผนภาพสถาปัตยกรรม 4 ชั้น สู่โค้ดจริงที่จำลอง Agent 1,000 ตัว
+            พร้อมกลไก S-i-n-n-i-n-g-01 ที่ปรับ learning rate ตัวเองจากผลงานจริง
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a class="focus-ring button-primary inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold" href="#launch">
+              สมัครคอร์ส <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+            </a>
+            <button id="watch-button" class="focus-ring button-secondary inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold" type="button" aria-expanded="false" aria-controls="how-it-works">
+              <i data-lucide="play" class="h-4 w-4"></i> ดูหลักสูตร
+            </button>
+          </div>
+          <aside id="how-it-works" class="reveal-panel" aria-live="polite">
+            <div class="canva-panel rounded-xl border p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="eyebrow text-xs font-bold" style="color:var(--cyan);">หลักสูตร 8 สัปดาห์</p>
+                  <p class="mt-2 text-sm leading-6" style="color:var(--muted);">
+                    M0 ปฐมนิเทศ (ฟรี) · M1 ทำไมต้องหลายชั้น · M2 Orchestrator + Workshop Agent 1,000 ตัว ·
+                    M3 Prometheus Reasoning · M4 Evolution Engine ปรับ LR อัตโนมัติ ·
+                    M5 Governance &amp; Ethics · M6 Dashboard + Portfolio · M7 โปรเจกต์จบ + นำเสนอ
+                  </p>
+                </div>
+                <button id="close-explainer" class="focus-ring rounded-md p-1 text-slate-300 hover:text-white" type="button" aria-label="Close explanation">
+                  <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="agent-console" aria-label="Architecture illustration">
+          <div class="console-grid"></div>
+          <div class="signal s1"></div><div class="signal s2"></div><div class="signal s3"></div><div class="signal s4"></div>
+          <div class="node node-one"><i data-lucide="cpu"></i>L1 · BODY</div>
+          <div class="node node-two"><i data-lucide="workflow"></i>L2 · MIND</div>
+          <div class="node node-three"><i data-lucide="sparkles"></i>L3 · SPIRIT</div>
+          <div class="node node-four"><i data-lucide="compass"></i>L4 · WILL</div>
+          <div class="core-orb"><i data-lucide="brain-circuit"></i></div>
+          <div class="absolute bottom-0 left-0 right-0 z-10 px-5 py-4">
+            <div class="terminal-row flex items-center justify-between gap-3 pt-3">
+              <span>S-i-n-n-i-n-g-01 ENGINE v8.0</span>
+              <span class="flex items-center gap-2 text-cyan-200">
+                <span class="h-2 w-2 animate-pulse rounded-full bg-cyan-300"></span>1,000 AGENTS LIVE
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="relative border-y border-slate-500/20 bg-[#0a1728]/80">
+      <div class="mx-auto grid max-w-7xl gap-0 px-5 py-7 sm:grid-cols-3 lg:px-8">
+        <div class="pb-5 sm:pb-0">
+          <p class="metric-value font-bold tracking-tight">8 สัปดาห์</p>
+          <p class="mt-1 text-sm text-slate-400">40+ ชั่วโมงเรียน + Workshop ลงมือทำ</p>
+        </div>
+        <div class="metric-rule py-5 sm:px-9 sm:py-0">
+          <p class="metric-value font-bold tracking-tight">62 สูตร</p>
+          <p class="mt-1 text-sm text-slate-400">คลังสูตรประกอบสถาปัตยกรรมครบชุด</p>
+        </div>
+        <div class="metric-rule pt-5 sm:px-9 sm:pt-0">
+          <p class="metric-value font-bold tracking-tight">1,000 Agents</p>
+          <p class="mt-1 text-sm text-slate-400">เดโมซิมูเลเตอร์รันได้จริงตั้งแต่วันแรก</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-xs font-bold" style="color:var(--ember);">WHAT YOU BUILD</p>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">เรียนจบได้ผลงานจริง ไม่ใช่แค่ใบประกาศ</h2>
+        <p class="mt-4 max-w-xl text-lg leading-7 text-slate-400">
+          ทุก Module ออกแบบให้คุณส่งงานได้จริง — โค้ดรันได้ แดชบอร์ดใช้งานได้
+          และ portfolio ที่เอาไปสมัครงานสาย AI Systems ได้ทันที
+        </p>
+      </div>
+      <div id="product" class="mt-12 grid gap-5 md:grid-cols-3">
+        <article class="feature-card rounded-2xl">
+          <div class="card-visual v1"><i data-lucide="workflow"></i></div>
+          <div class="p-6">
+            <div class="mb-5 inline-flex rounded-lg bg-cyan-300/10 p-2 text-cyan-200"><i data-lucide="layers" class="h-5 w-5"></i></div>
+            <h3 class="font-bold">Orchestrator Workshop</h3>
+            <p class="mt-3 leading-6 text-slate-400">เขียนระบบคุม Agent ขนานด้วย Semaphore + Concurrent Pattern จำลอง 1,000 agents รันจริงบนเครื่องคุณ</p>
+          </div>
+        </article>
+        <article class="feature-card rounded-2xl">
+          <div class="card-visual v2"><i data-lucide="brain-circuit"></i></div>
+          <div class="p-6">
+            <div class="mb-5 inline-flex rounded-lg bg-orange-400/10 p-2 text-orange-300"><i data-lucide="trending-up" class="h-5 w-5"></i></div>
+            <h3 class="font-bold">Evolution Engine</h3>
+            <p class="mt-3 leading-6 text-slate-400">สูตร learningRate = 0.1 × (1 + selfPerception) — agent วัดผลตัวเองแล้วปรับความเร็วการเรียนรู้อัตโนมัติทุกรอบ</p>
+          </div>
+        </article>
+        <article class="feature-card rounded-2xl">
+          <div class="card-visual v3"><i data-lucide="line-chart"></i></div>
+          <div class="p-6">
+            <div class="mb-5 inline-flex rounded-lg bg-emerald-300/10 p-2 text-emerald-200"><i data-lucide="presentation" class="h-5 w-5"></i></div>
+            <h3 class="font-bold">Dashboard + Portfolio</h3>
+            <p class="mt-3 leading-6 text-slate-400">สร้าง dashboard ตรวจระบบ + จัด portfolio 5 ชิ้นจากงานในคอร์ส พร้อมแนวทางนำเสนอหา job/B2B</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="launch" class="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+      <div class="canva-banner relative overflow-hidden rounded-2xl border px-7 py-12 md:px-12 md:py-16">
+        <div class="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-cyan-300/10 blur-3xl"></div>
+        <div class="relative max-w-2xl">
+          <p class="eyebrow text-xs font-bold" style="color:var(--cyan);">PRICING</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">พร้อมเป็น AI Architect หรือยัง?</h2>
+          <p class="mt-4 text-lg leading-7 text-slate-300">
+            เลือกแพ็กเกจที่ใช่ — Early Bird สำหรับ 10 ที่แรกของรอบ
+          </p>
+          <div class="mt-5">
+            <span class="price-pill">Early Bird 1,990฿ · เทมเพลต + สูตรครบ</span>
+            <span class="price-pill">มาตรฐาน 3,500฿ · คอร์ส + โค้ด + ใบรับรอง</span>
+            <span class="price-pill">VIP 7,900฿ · โค้ช 1:1 + ตรวจ portfolio</span>
+          </div>
+          <a class="focus-ring button-primary mt-8 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-bold" href="mailto:hello@yourdomain.com?subject=สนใจคอร์ส%20Multi-Layer%20AI%20Architect">
+            สมัคร / สอบถาม <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+          <p class="mt-3 text-xs text-slate-500">* เปลี่ยนลิงก์ปุ่มเป็น LINE OA / หน้าชำระเงินของคุณก่อนใช้งานจริง</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-500/15">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p class="text-slate-500">© 2026 DjSinning Protocol — สถาปัตยกรรม AI เพื่อการเรียนรู้</p>
+      <a class="focus-ring rounded-md text-slate-400 transition hover:text-cyan-200" href="README.md">เอกสารภาพรวม</a>
+    </div>
+  </footer>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  lucide.createIcons();
+  const watchButton = document.getElementById("watch-button");
+  const closeButton = document.getElementById("close-explainer");
+  const explainer = document.getElementById("how-it-works");
+  function setExplainer(open) {
+    explainer.classList.toggle("is-open", open);
+    watchButton.setAttribute("aria-expanded", String(open));
+  }
+  watchButton.addEventListener("click", function () {
+    setExplainer(!explainer.classList.contains("is-open"));
+  });
+  closeButton.addEventListener("click", function () {
+    setExplainer(false);
+    watchButton.focus();
+  });
+});
+</script>
+</body>
+</html>
