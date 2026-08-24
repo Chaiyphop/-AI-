@@ -35,11 +35,22 @@
   .price li { padding:4px 0; }
   .price .btn { display:block; margin-top:16px; background:#e94560; color:#fff; text-decoration:none; padding:10px; border-radius:10px; font-weight:600; }
   .price.featured .btn { background:#64ffda; color:#0d0d1a; }
+  .signup { background:linear-gradient(135deg,#16213e,#10172b); border:1px solid #0f3460; border-radius:14px; padding:24px; margin-bottom:40px; }
+  .signup h2 { margin-top:0; }
+  .signup-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .signup label { display:grid; gap:6px; color:#cbd5e1; font-size:14px; }
+  .signup input, .signup select { width:100%; border:1px solid #31527b; border-radius:8px; padding:11px 12px; background:#0d0d1a; color:#fff; font:inherit; }
+  .signup input:focus, .signup select:focus { outline:2px solid #64ffda; outline-offset:2px; }
+  .signup .full { grid-column:1 / -1; }
+  .signup button { border:0; cursor:pointer; background:#64ffda; color:#0d0d1a; padding:12px 20px; border-radius:10px; font:inherit; font-weight:700; }
+  .signup small { color:#8892b0; }
+  .signup-status { color:#64ffda; min-height:24px; }
   .faq { margin-bottom:40px; }
   .faq details { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:14px 18px; margin-bottom:10px; }
   .faq summary { cursor:pointer; color:#fff; font-weight:600; }
   .faq p { color:#8892b0; font-size:14px; margin-top:8px; }
   footer { text-align:center; color:#525f7a; font-size:12px; padding:20px; border-top:1px solid #1a1a2e; }
+  @media (max-width:600px) { .signup-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -77,31 +88,69 @@
         <h3>Early Bird</h3>
         <div class="amt">1,990 บาท</div>
         <ul><li>คอร์สเต็ม 8 สัปดาห์</li><li>เทมเพลตเอกสารสถาปัตยกรรม</li><li>สูตร 62 สูตร PDF</li><li>สิทธิ์เข้าชุมชน Discord</li></ul>
-        <a class="btn" href="#">จองเลย</a>
+        <a class="btn package-link" href="#signup" data-package="Early Bird">จองเลย</a>
       </div>
       <div class="price featured">
         <h3>มาตรฐาน ⭐</h3>
         <div class="amt">3,500 บาท</div>
         <ul><li>ทุกอย่างใน Early Bird</li><li>ไฟล์โค้ด + Workshop ครบ</li><li>ใบรับรองจบคอร์ส</li><li>อัปเดตเนื้อหาฟรี 1 ปี</li></ul>
-        <a class="btn" href="#">สมัครเลย</a>
+        <a class="btn package-link" href="#signup" data-package="มาตรฐาน">สมัครเลย</a>
       </div>
       <div class="price">
         <h3>VIP (จำกัด 10 ที่)</h3>
         <div class="amt">7,900 บาท</div>
         <ul><li>ทุกอย่างในมาตรฐาน</li><li>โค้ชชิ่ง 1:1 (4 ครั้ง)</li><li>ตรวจ Portfolio 5 ไฟล์</li><li>แนะนำสายงาน AI</li></ul>
-        <a class="btn" href="#">สมัคร VIP</a>
+        <a class="btn package-link" href="#signup" data-package="VIP">สมัคร VIP</a>
       </div>
     </div>
+
+    <section id="signup" class="signup" aria-labelledby="signup-title">
+      <h2 id="signup-title">📝 ลงชื่อรับลิงก์ชำระเงิน</h2>
+      <p style="color:#8892b0;margin-bottom:18px;">กรอกข้อมูล แล้วกดส่งเพื่อเปิดอีเมลพร้อมรายละเอียดแพ็กเกจที่เลือก ทีมงานจะตอบกลับพร้อมวันเริ่มเรียนและลิงก์ชำระเงิน</p>
+      <form id="signup-form">
+        <div class="signup-grid">
+          <label>ชื่อที่ใช้ติดต่อ<input name="name" required autocomplete="name" placeholder="ชื่อของคุณ"></label>
+          <label>อีเมล<input name="email" required type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <label>แพ็กเกจที่สนใจ<select name="package" required><option value="Early Bird">Early Bird — 1,990 บาท</option><option value="มาตรฐาน">มาตรฐาน — 3,500 บาท</option><option value="VIP">VIP — 7,900 บาท</option></select></label>
+          <label>ช่องทางติดต่อเพิ่มเติม<input name="channel" required placeholder="LINE ID หรือเบอร์โทร"></label>
+          <label class="full">เป้าหมายจากคอร์ส<textarea name="goal" rows="3" style="width:100%;border:1px solid #31527b;border-radius:8px;padding:11px 12px;background:#0d0d1a;color:#fff;font:inherit;" placeholder="อยากนำความรู้ไปทำอะไร"></textarea></label>
+          <div class="full" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;"><button type="submit">ส่งข้อมูลสมัคร</button><small>ยังไม่มีการเรียกเก็บเงินในขั้นตอนนี้</small></div>
+          <p id="signup-status" class="signup-status full" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
 
     <h2>❓ คำถามที่พบบ่อย</h2>
     <div class="faq">
       <details open><summary>ต้องเก่ง AI มาก่อนไหม?</summary><p>ไม่จำเป็น — แค่มีพื้นฐานการเขียนโปรแกรมบ้าง คอร์สเริ่มจากหลักการพื้นฐานและค่อยๆ ลึกไปจนถึงการเขียนระบบจริง</p></details>
       <details><summary>เรียนจบแล้วได้อะไร?</summary><p>ได้ Portfolio ผลงานจริง (สถาปัตยกรรม + Dashboard + Agent Simulator) ที่ใช้ยื่นสมัครงานสาย AI/Systems ได้ทันที</p></details>
       <details><summary>มีใบรับรองไหม?</summary><p>มีใบรับรองจบคอร์สในแพ็กเกจมาตรฐานและ VIP พร้อมลายเซ็นดิจิทัล</p></details>
-      <details><summary>จ่ายยังไง?</summary><p>พร้อมเพย์ / บัตรเครดิต / ผ่อน 0% ผ่านแบงก์ที่ร่วมรายการ</p></details>
+      <details><summary>จ่ายยังไง?</summary><p>หลังส่งข้อมูล ทีมงานจะยืนยันรอบเรียนและส่งช่องทางชำระเงินที่ใช้งานได้จริงให้ทางอีเมลหรือช่องทางติดต่อที่ระบุ</p></details>
     </div>
   </div>
 
   <footer>© 2026 Multi-Layer AI Architect — หน้าเสนอขายคอร์ส สร้างโดยระบบ AI Auto</footer>
 </body>
+<script>
+  document.querySelectorAll('.package-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      document.querySelector('[name="package"]').value = link.dataset.package;
+    });
+  });
+
+  document.getElementById('signup-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const subject = 'สนใจคอร์ส Multi-Layer AI Architect - ' + form.get('package');
+    const body = [
+      'ชื่อ: ' + form.get('name'),
+      'อีเมล: ' + form.get('email'),
+      'แพ็กเกจ: ' + form.get('package'),
+      'ช่องทางติดต่อ: ' + form.get('channel'),
+      'เป้าหมาย: ' + (form.get('goal') || '-')
+    ].join('\n');
+    document.getElementById('signup-status').textContent = 'กำลังเปิดอีเมลสำหรับส่งรายละเอียดสมัคร...';
+    window.location.href = 'mailto:hello@yourdomain.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+</script>
 </html>
