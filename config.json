@@ -4,6 +4,11 @@
   "LINE_CHANNEL_ACCESS_TOKEN": "",
   "LINE_CHANNEL_SECRET": "",
   "OPENAI_API_KEY": "",
+  "checkoutLinks": {
+    "Early Bird": "",
+    "มาตรฐาน": "",
+    "VIP": ""
+  },
   "faqPrice": "แพ็กเกจคอร์ส: Early Bird 1,990 บาท (เทมเพลต + สูตรทั้งหมด) | มาตรฐาน 3,500 บาท (คอร์ส + ไฟล์โค้ด + ใบรับรอง) | VIP 7,900 บาท (โค้ชชิ่ง 1:1 + ตรวจ portfolio) ครับ",
   "faqCourse": "คอร์ส 8 สัปดาห์ 'ออกแบบระบบ AI หลายชั้นที่เรียนรู้ตัวเองได้' เนื้อหาครบทั้ง Orchestrator, Prometheus, Evolution Engine และ Governance + Workshop ลงมือทำจริงทุกสัปดาห์ครับ",
   "faqSignup": "สมัครได้ 2 ช่องทาง: ผ่านเว็บไซต์คอร์สของเรา หรือพิมพ์ 'สนใจแพ็กเกจ VIP' ทางนี้ แล้วทีมงานจะติดต่อกลับพร้อมลิงก์ชำระเงินครับ",

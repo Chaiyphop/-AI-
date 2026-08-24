@@ -47,6 +47,20 @@ line-bot/
 
 **แก้คำตอบ FAQ:** แก้ข้อความใน `config.json` (`faqPrice`, `faqCourse`, `faqSignup`, `fallbackMessage`) แล้ว restart bot
 
+### เปิดรับชำระเงินตามแพ็กเกจ
+
+ใส่ลิงก์ชำระเงินจริงของแต่ละแพ็กเกจใน `checkoutLinks` แล้ว restart bot:
+
+```json
+"checkoutLinks": {
+   "Early Bird": "https://your-payment-link.example/early-bird",
+   "มาตรฐาน": "https://your-payment-link.example/standard",
+   "VIP": "https://your-payment-link.example/vip"
+}
+```
+
+เมื่อผู้สนใจพิมพ์ `สนใจ VIP`, `จอง` หรือ `สมัคร` บอทจะเลือกแพ็กเกจ, ส่งลิงก์ชำระเงิน และบันทึก lead ลงไฟล์ `logs/chat-YYYYMMDD.txt`
+
 ## ⚠️ ข้อควรรู้
 
 1. **Quick tunnel URL เปลี่ยนทุกครั้งที่รัน `start-tunnel.bat` ใหม่** → ต้องไปแก้ Webhook URL ใหม่ด้วย ถ้าอยากได้ domain ถาวร สมัคร Cloudflare (ฟรี) แล้วใช้ named tunnel — บอกผมได้ จะเขียนขั้นตอนเพิ่ม

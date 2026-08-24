@@ -35,9 +35,16 @@ Write-Host ''
 
 function Get-FaqReply([string]$text) {
     $t = $text.ToLower()
+    if ($t -match 'สนใจ|จอง|สมัคร|ซื้อ|ชำระ|โอน') {
+        $package = if ($t -match 'vip') { 'VIP' } elseif ($t -match 'มาตรฐาน|standard') { 'มาตรฐาน' } else { 'Early Bird' }
+        $link = [string]$cfg.checkoutLinks.$package
+        Log ("LEAD: package=$package text=$text")
+        if ($link) { return "ได้เลยครับ แพ็กเกจ $package ราคา $($cfg.faqPrice)\nชำระเงินได้ที่: $link\nหากชำระแล้ว ส่งสลิปพร้อมชื่อและอีเมลในแชทนี้ได้เลยครับ" }
+        return "รับทราบครับ สนใจแพ็กเกจ $package แล้ว กรุณาพิมพ์ชื่อ อีเมล และ LINE ID/เบอร์โทร ทีมงานจะส่งลิงก์ชำระเงินให้ครับ"
+    }
     if ($t -match 'ราคา|เท่าไหร่|ค่าเรียน|กี่บาท|แพง')   { return [string]$cfg.faqPrice }
     if ($t -match 'คอร์ส|เรียน|หลักสูตร|สอนอะไร|เนื้อหา') { return [string]$cfg.faqCourse }
-    if ($t -match 'สมัคร|จ่าย|ชำระ|โอน|ช่องทาง|ติดต่อ')   { return [string]$cfg.faqSignup }
+    if ($t -match 'จ่าย|ช่องทาง|ติดต่อ')   { return [string]$cfg.faqSignup }
     return [string]$cfg.fallbackMessage
 }
 
